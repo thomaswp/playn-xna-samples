@@ -3,5 +3,5 @@
   <property name="java.classname" value="playn.sample.payments.java.PaymentsDemoJava"/>
   <property name="html.classname" value="playn.sample.payments.PaymentsDemo"/>
   <property name="html.index" value="PaymentsDemo.html"/>
-  <import file="../build-common.xml"/>
+  <import file="../etc/build-common.xml"/>
 </project>
