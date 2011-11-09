@@ -5,13 +5,18 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.googlecode.playn</groupId>
-    <artifactId>playn-demos</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>playn-project</artifactId>
+    <version>1.0</version>
   </parent>
 
   <artifactId>playn-showcase</artifactId>
   <name>PlayN Showcase Metaproject</name>
+  <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+
+  <properties>
+    <playn.version>1.0</playn.version>
+  </properties>
 
   <modules>
     <module>core</module>
