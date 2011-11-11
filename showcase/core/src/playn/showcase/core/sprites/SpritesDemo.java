@@ -18,12 +18,12 @@ package playn.showcase.core.sprites;
 import java.util.ArrayList;
 import java.util.List;
 
-import static playn.core.PlayN.*;
-
 import playn.core.GroupLayer;
 import playn.core.Image;
 import playn.core.ImageLayer;
 import playn.core.Pointer;
+import playn.core.Sound;
+import static playn.core.PlayN.*;
 
 import playn.showcase.core.Demo;
 
@@ -42,6 +42,9 @@ public class SpritesDemo extends Demo {
     layer = graphics().createGroupLayer();
     graphics().rootLayer().add(layer);
 
+    // load a sound that we'll play when placing sprites
+    final Sound ding = assetManager().getSound("sprites/ding");
+
     // create and add background image layer
     Image bgImage = assetManager().getImage("sprites/bg.png");
     ImageLayer bgLayer = graphics().createImageLayer(bgImage);
@@ -53,6 +56,7 @@ public class SpritesDemo extends Demo {
       public void onPointerEnd(Pointer.Event event) {
         Pea pea = new Pea(layer, event.x(), event.y());
         peas.add(pea);
+        ding.play();
       }
     });
   }

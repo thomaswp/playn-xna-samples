@@ -23,7 +23,7 @@ public class ShowcaseJava {
 
   public static void main(String[] args) {
     JavaPlatform platform = JavaPlatform.register();
-    platform.assetManager().setPathPrefix("src/playn/showcase/resources");
+    platform.assetManager().setPathPrefix("playn/showcase/resources");
     PlayN.run(new Showcase());
   }
 }
