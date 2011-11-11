@@ -27,10 +27,6 @@
     </dependency>
   </dependencies>
 
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-  </build>
-
   <profiles>
     <!-- allows testing of Java backend via: mvn test -Ptest-java -->
     <profile>
