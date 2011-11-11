@@ -24,7 +24,7 @@ public class PaymentsDemoJava {
 
   public static void main(String[] args) {
     JavaAssetManager assets = JavaPlatform.register().assetManager();
-    assets.setPathPrefix("src/playn/sample/payments/resources");
+    assets.setPathPrefix("playn/sample/payments/resources");
     PlayN.run(new PaymentsDemo());
   }
 }

@@ -23,7 +23,7 @@ public class HelloGameJava {
 
   public static void main(String[] args) {
     JavaPlatform platform = JavaPlatform.register();
-    platform.assetManager().setPathPrefix("src/playn/sample/hello/resources");
+    platform.assetManager().setPathPrefix("playn/sample/hello/resources");
     PlayN.run(new HelloGame());
   }
 }
