@@ -66,6 +66,9 @@
 
   <target name="compile" depends="-prepare" description="Compiles the core code.">
     <mkdir dir="${classes.dir}"/>
+    <copy todir="${classes.dir}">
+      <fileset dir="core/${src.dir}" includes="**" excludes="**/*.java"/>
+    </copy>
     <javac srcdir="core/${src.dir}" destdir="${classes.dir}" includeAntRuntime="false"
            debug="on" deprecation="on" source="1.6" target="1.6">
       <classpath refid="classpath"/>
