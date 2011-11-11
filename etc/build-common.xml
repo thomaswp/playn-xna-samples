@@ -27,7 +27,21 @@
   <target name="-prepare" depends="-init-maven-ant">
     <mkdir dir="${target.dir}"/>
     <artifact:pom id="pom" file="core/pom.xml"/>
-    <artifact:dependencies pathId="classpath" pomRefId="pom" useScope="compile"/>
+    <artifact:dependencies pathId="core.classpath" pomRefId="pom" useScope="compile"/>
+  </target>
+
+  <!-- unfortunately the Maven Ant Tasks don't handle multi-submodule projects well -->
+  <!-- so we have to do a bunch of manual dependency management in here -->
+
+  <target name="-prepare-java" depends="-prepare">
+    <artifact:dependencies pathId="java-extras.classpath">
+      <dependency groupId="com.googlecode.playn" artifactId="playn-java"
+                  version="${pom.properties.playn.version}"/>
+    </artifact:dependencies>
+    <path id="java.classpath">
+      <path refid="core.classpath"/>
+      <path refid="java-extras.classpath"/>
+    </path>
   </target>
 
   <target name="-prepare-html" depends="-prepare">
@@ -38,14 +52,22 @@
                   version="${pom.properties.gwt.version}"/>
     </artifact:dependencies>
     <path id="html.classpath">
-      <path refid="classpath"/>
+      <path refid="core.classpath"/>
       <path refid="html-extras.classpath"/>
     </path>
   </target>
 
   <target name="-prepare-android" depends="-prepare">
-    <artifact:pom id="android.pom" file="android/pom.xml"/>
-    <artifact:dependencies pathId="android.classpath" pomRefId="android.pom" useScope="compile"/>
+    <artifact:dependencies pathId="android-extras.classpath">
+      <dependency groupId="com.googlecode.playn" artifactId="playn-android"
+                  version="${pom.properties.playn.version}"/>
+      <dependency groupId="com.google.android" artifactId="android"
+                  version="${pom.properties.android.version}"/>
+    </artifact:dependencies>
+    <path id="android.classpath">
+      <path refid="core.classpath"/>
+      <path refid="android-extras.classpath"/>
+    </path>
   </target>
 
   <target name="-prep-webapp" depends="-prepare-html">
@@ -64,17 +86,20 @@
     <delete dir="${target.dir}"/>
   </target>
 
-  <target name="compile" depends="-prepare" description="Compiles the core code.">
+  <target name="compile" depends="-prepare-java" description="Compiles the core code.">
     <mkdir dir="${classes.dir}"/>
-    <copy todir="${classes.dir}">
-      <fileset dir="core/${src.dir}" includes="**" excludes="**/*.java"/>
-    </copy>
-    <javac srcdir="core/${src.dir}" destdir="${classes.dir}" includeAntRuntime="false"
+    <javac destdir="${classes.dir}" includeAntRuntime="false"
            debug="on" deprecation="on" source="1.6" target="1.6">
-      <classpath refid="classpath"/>
+      <src path="core/${src.dir}"/>
+      <src path="java/${src.dir}"/>
+      <classpath refid="java.classpath"/>
       <compilerarg value="-Xlint"/>
       <compilerarg value="-Xlint:-serial"/>
     </javac>
+    <!-- copy all of our resources into the classes directory -->
+    <copy todir="${classes.dir}">
+      <fileset dir="core/${src.dir}" includes="**" excludes="**/*.java"/>
+    </copy>
   </target>
 
   <target name="-compile-html" depends="-prepare-html,compile">
@@ -86,7 +111,9 @@
     </javac>
   </target>
 
-  <target name="compile-html" depends="-prep-webapp,-compile-html" description="Compiles HTML game.">
+  <property name="gwt.style" value="obf"/>
+  <target name="compile-html" depends="-prep-webapp,-compile-html"
+          description="Compiles game to JavaScript.">
     <java fork="true" maxmemory="1024M" failonerror="true" classname="com.google.gwt.dev.Compiler">
       <classpath>
         <pathelement location="${javax.validation:validation-api:jar}"/>
@@ -97,8 +124,7 @@
         <path refid="html.classpath"/>
       </classpath>
       <jvmarg value="-Djava.awt.headless=true"/>
-      <!--<arg value="-style"/><arg value="pretty"/>-->
-      <!--<arg value="-gen"/><arg value="${deploy.dir}/gwt-gen"/>-->
+      <arg value="-style"/><arg value="${gwt.style}"/>-->
       <arg value="-war"/>
       <arg value="${target.dir}/webapp"/>
       <arg value="${html.classname}"/>
@@ -146,7 +172,7 @@
     <java fork="true" dir="core" classname="${java.classname}">
       <classpath>
         <pathelement location="${classes.dir}"/>
-        <path refid="classpath"/>
+        <path refid="java.classpath"/>
       </classpath>
     </java>
   </target>

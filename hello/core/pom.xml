@@ -12,14 +12,10 @@
   <artifactId>playn-hello-core</artifactId>
   <name>PlayN Hello Core</name>
 
-  <properties>
-    <exec.mainClass>playn.sample.hello.java.HelloGameJava</exec.mainClass>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>com.googlecode.playn</groupId>
-      <artifactId>playn-java</artifactId>
+      <artifactId>playn-core</artifactId>
       <version>${playn.version}</version>
     </dependency>
   </dependencies>
