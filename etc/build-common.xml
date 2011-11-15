@@ -124,7 +124,7 @@
         <path refid="html.classpath"/>
       </classpath>
       <jvmarg value="-Djava.awt.headless=true"/>
-      <arg value="-style"/><arg value="${gwt.style}"/>-->
+      <arg value="-style"/><arg value="${gwt.style}"/>
       <arg value="-war"/>
       <arg value="${target.dir}/webapp"/>
       <arg value="${html.classname}"/>
