@@ -42,6 +42,7 @@ import static playn.core.PlayN.*;
 public class Menu extends Demo
 {
   private final Keyboard.Listener keyListener = new Keyboard.Adapter() {
+    @Override
     public void onKeyDown(Keyboard.Event event) {
       // this is a bit hacky, but serves our purpose
       int demoIndex = event.key().ordinal() - Key.K1.ordinal();
@@ -100,6 +101,7 @@ public class Menu extends Demo
         Button button = new Button(key++ + " - " + demo.name());
         buttons.add(button);
         button.clicked().connect(new UnitSlot() {
+          @Override
           public void onEmit() {
             showcase.activateDemo(demo);
           }

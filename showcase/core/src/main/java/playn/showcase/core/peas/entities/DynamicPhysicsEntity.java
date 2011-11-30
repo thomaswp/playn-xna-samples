@@ -53,11 +53,13 @@ public abstract class DynamicPhysicsEntity extends Entity implements PhysicsEnti
     prevA = body.getAngle();
   }
 
+  @Override
   public void initPreLoad(final PeaWorld peaWorld) {
     // attach our layer to the dynamic layer
     peaWorld.dynamicLayer.add(layer);
   }
 
+  @Override
   public void initPostLoad(final PeaWorld peaWorld) {
   }
 

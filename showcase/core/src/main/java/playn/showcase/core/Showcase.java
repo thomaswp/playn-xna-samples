@@ -60,6 +60,7 @@ public class Showcase implements Game
   @Override
   public void init() {
     PlayN.keyboard().setListener(new Keyboard.Adapter() {
+      @Override
       public void onKeyDown(Keyboard.Event event) {
         if (backKeys.contains(event.key())) {
             activateDemo(menuDemo);
@@ -71,6 +72,7 @@ public class Showcase implements Game
         }
       }
 
+      @Override
       public void onKeyUp(Keyboard.Event event) {
         Keyboard.Listener delegate = activeDemo.keyboardListener();
         if (delegate != null) {

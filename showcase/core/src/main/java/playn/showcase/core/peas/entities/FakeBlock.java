@@ -24,16 +24,20 @@ public class FakeBlock extends Entity {
     super(peaWorld, x, y, angle);
   }
 
+  @Override
   public void paint(float alpha) {
   }
 
+  @Override
   public void update(float delta) {
   }
 
+  @Override
   public void setPos(float x, float y) {
     layer.setTranslation(x, y);
   }
 
+  @Override
   public void setAngle(float a) {
     layer.setRotation(a);
   }

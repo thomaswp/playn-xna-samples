@@ -38,9 +38,11 @@ public abstract class StaticPhysicsEntity extends Entity implements PhysicsEntit
   public void update(float delta) {
   }
 
+  @Override
   public void initPreLoad(final PeaWorld peaWorld) {
   }
 
+  @Override
   public void initPostLoad(final PeaWorld peaWorld) {
     peaWorld.staticLayerBack.add(layer);
   }
