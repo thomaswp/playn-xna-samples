@@ -44,14 +44,13 @@ public class SpriteLoader {
    * json data should be in the following format:
    *
    * <pre>
-   * {@code {
+   * {
    *   "sprites": [
    *     {"id": "sprite_0", "x": 30, "y": 30, "w": 37, "h": 37},
    *     {"id": "sprite_1", "x": 67, "y": 30, "w": 37, "h": 37},
    *     {"id": "sprite_2", "x": 104, "y": 30, "w": 37, "h": 37},
    *     {"id": "sprite_3", "x": 141, "y": 30, "w": 37, "h": 37}
-   *   ]}
-   * }
+   * ]}
    * </pre>
    */
   public static Sprite getSprite(String imagePath, String jsonPath) {
@@ -103,15 +102,14 @@ public class SpriteLoader {
    * json data should be in the following format:
    *
    * <pre>
-   * {@code {
+   * {
    *   "urls": ["images/peasprites2.png", "images/peasprites3.png"],
    *   "sprites": [
    *     {"id": "sprite_0", "url": 0, "x": 30, "y": 30, "w": 37, "h": 37},
    *     {"id": "sprite_1", "url": 0, "x": 67, "y": 30, "w": 37, "h": 37},
    *     {"id": "sprite_2", "url": 1, "x": 104, "y": 30, "w": 37, "h": 37},
    *     {"id": "sprite_3", "url": 1, "x": 141, "y": 30, "w": 37, "h": 37}
-   *   ]}
-   * }
+   * ]}
    * </pre>
    */
   public static Sprite getSprite(String jsonPath) {
@@ -164,8 +162,8 @@ public class SpriteLoader {
    * <p>
    * If images is null, the images urls are parsed from the json.
    *
-   * @param image Image to associate with each {@link SpriteImage}, or null to parse from the json
-   * @param sheet Sprite to store the {@link SpritesImage}s
+   * @param images Image to associate with each {@link SpriteImage}, or null to parse from the json
+   * @param sprite Sprite to store the {@link SpriteImage}s
    * @param json json to parse
    */
   private static void parseJson(Image[] images, Sprite sprite, String json) {

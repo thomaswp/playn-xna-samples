@@ -33,7 +33,7 @@ import playn.core.ResourceCallback;
  * <p>
  * Create a Sprite from json data using {@link SpriteLoader#getSprite(String json)}.
  * <p>
- * To use, add {@link #layer()} to a {@link Layer} in your game. To change sprites, call
+ * To use, add {@link #layer()} to a {@link playn.core.Layer} in your game. To change sprites, call
  * {@link #setSprite(int)}.
  */
 public class Sprite {

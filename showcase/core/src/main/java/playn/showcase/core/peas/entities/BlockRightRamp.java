@@ -26,6 +26,7 @@ import org.jbox2d.dynamics.World;
 import playn.showcase.core.peas.PeaWorld;
 
 public class BlockRightRamp extends Block {
+  @SuppressWarnings("hiding")
   public static String TYPE = "BlockRightRamp";
 
   public BlockRightRamp(PeaWorld peaWorld, World world, float x, float y, float angle) {
