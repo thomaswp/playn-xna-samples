@@ -544,7 +544,7 @@ public class CuteWorld {
     o.saveOldPos();
 
     // Gravity & friction.
-    if (o.z > (double) o.stack.height()) {
+    if (o.z > o.stack.height()) {
       o.az += delta * GRAVITY;
     }
 
