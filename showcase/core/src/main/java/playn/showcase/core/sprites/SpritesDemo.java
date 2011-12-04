@@ -28,8 +28,9 @@ import static playn.core.PlayN.*;
 import playn.showcase.core.Demo;
 
 public class SpritesDemo extends Demo {
-  GroupLayer layer;
-  List<Pea> peas = new ArrayList<Pea>(0);
+  private GroupLayer layer;
+  private List<Pea> peas = new ArrayList<Pea>(0);
+  private Sound ding;
 
   @Override
   public String name() {
@@ -43,7 +44,7 @@ public class SpritesDemo extends Demo {
     graphics().rootLayer().add(layer);
 
     // load a sound that we'll play when placing sprites
-    final Sound ding = assetManager().getSound("sprites/ding");
+    ding = assetManager().getSound("sprites/ding");
 
     // create and add background image layer
     Image bgImage = assetManager().getImage("sprites/bg.png");
@@ -54,13 +55,19 @@ public class SpritesDemo extends Demo {
     pointer().setListener(new Pointer.Adapter() {
       @Override
       public void onPointerEnd(Pointer.Event event) {
-        Pea pea = new Pea(layer, event.x(), event.y());
-        peas.add(pea);
-        ding.play();
+        addPea(event.x(), event.y());
       }
     });
+    
+    addPea(graphics().screenWidth() / 2, graphics().screenHeight() / 2);
   }
 
+  private void addPea(float x, float y) {
+    Pea pea = new Pea(layer, x, y);
+    peas.add(pea);
+    ding.play();
+  }
+  
   @Override
   public void shutdown() {
     pointer().setListener(null);
