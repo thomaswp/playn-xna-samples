@@ -53,8 +53,6 @@ public class SwirlDemo extends Demo {
     graphics().rootLayer().add(groupLayer);
 
     bgLayer = graphics().createImageLayer(background);
-    bgLayer.setWidth(256);
-    bgLayer.setHeight(256);
     bgLayer.setDepth(-1);
     graphics().rootLayer().add(bgLayer);
 
