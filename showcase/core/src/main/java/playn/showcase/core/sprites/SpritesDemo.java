@@ -58,8 +58,8 @@ public class SpritesDemo extends Demo {
         addPea(event.x(), event.y());
       }
     });
-    
-    addPea(graphics().screenWidth() / 2, graphics().screenHeight() / 2);
+
+    addPea(graphics().width() / 2, graphics().height() / 2);
   }
 
   private void addPea(float x, float y) {
@@ -67,7 +67,7 @@ public class SpritesDemo extends Demo {
     peas.add(pea);
     ding.play();
   }
-  
+
   @Override
   public void shutdown() {
     pointer().setListener(null);
