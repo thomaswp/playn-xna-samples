@@ -41,6 +41,14 @@
         <configuration>
           <disableClassMetadata>false</disableClassMetadata>
         </configuration>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>
