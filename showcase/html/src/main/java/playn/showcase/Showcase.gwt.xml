@@ -19,12 +19,8 @@
   <inherits name="org.jbox2d.GwtBox2D" />
   <!-- for the menu UI -->
   <inherits name='tripleplay.TriplePlay'/>
-
-  <!--
-    Optionally, enable gwt-log's advanced logging features:
-
-      <inherits name="playn.logging.Enhanced" />
-  -->
+  <!-- for enhanced logging -->
+  <inherits name="playn.logging.Enhanced" />
 
   <source path='core'/>
   <source path='html'/>
