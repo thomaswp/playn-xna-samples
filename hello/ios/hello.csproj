@@ -66,6 +66,8 @@
     <Reference Include="IKVM.OpenJDK.Core">
       <HintPath>..\..\..\..\ops\ikvm-monotouch\bin\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
