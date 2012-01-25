@@ -13,7 +13,7 @@ namespace playn.sample.hello.ios
 	{
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			IOSPlatform.register();
+			IOSPlatform.register(app);
 		    PlayN.run(new HelloGame());
     		return true;
 		}
