@@ -23,7 +23,6 @@ import playn.core.Platform;
 
 import react.UnitSlot;
 
-import tripleplay.ui.AxisLayout;
 import tripleplay.ui.Background;
 import tripleplay.ui.Button;
 import tripleplay.ui.Group;
@@ -33,6 +32,7 @@ import tripleplay.ui.Root;
 import tripleplay.ui.Style;
 import tripleplay.ui.Styles;
 import tripleplay.ui.Stylesheet;
+import tripleplay.ui.layout.AxisLayout;
 
 import static playn.core.PlayN.*;
 

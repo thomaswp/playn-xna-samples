@@ -64,7 +64,7 @@
       <HintPath>showcase-core.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Core">
-      <HintPath>..\..\..\..\ops\ikvm-0.46.0.1\src\bin\IKVM.OpenJDK.Core.dll</HintPath>
+      <HintPath>..\..\..\..\projects\ikvm-monotouch\bin\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Data" />
