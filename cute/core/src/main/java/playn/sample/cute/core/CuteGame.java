@@ -18,16 +18,16 @@ package playn.sample.cute.core;
 import java.util.HashMap;
 import java.util.Map;
 
-import static playn.core.PlayN.*;
-import playn.core.Key;
-
 import playn.core.Game;
+import playn.core.ImmediateLayer;
 import playn.core.Json;
+import playn.core.Key;
 import playn.core.Keyboard;
 import playn.core.Pointer;
 import playn.core.Surface;
 import playn.core.SurfaceLayer;
 import playn.core.util.Callback;
+import static playn.core.PlayN.*;
 
 public class CuteGame implements Game, Keyboard.Listener {
 
@@ -43,7 +43,8 @@ public class CuteGame implements Game, Keyboard.Listener {
     }
   }
 
-  private SurfaceLayer gameLayer;
+  private ImmediateLayer gameLayer;
+  private float frameAlpha;
 
   private CuteWorld world;
   private CuteObject catGirl;
@@ -56,9 +57,6 @@ public class CuteGame implements Game, Keyboard.Listener {
   @Override
   public void init() {
     graphics().setSize(800, 600);
-
-    gameLayer = graphics().createSurfaceLayer(graphics().width(), graphics().height());
-    graphics().rootLayer().add(gameLayer);
 
     keyboard().setListener(this);
     pointer().setListener(new Pointer.Listener() {
@@ -125,6 +123,16 @@ public class CuteGame implements Game, Keyboard.Listener {
     world.addTile(4, 6, 17);
     world.addTile(5, 6, 16);
     world.addTile(6, 6, 15);
+
+    // create an immediate layer that handles all of our rendering
+    gameLayer = graphics().createImmediateLayer(new ImmediateLayer.Renderer() {
+      public void render(Surface surface) {
+        world.setViewOrigin(catGirl.x(frameAlpha), catGirl.y(frameAlpha), catGirl.z(frameAlpha));
+        surface.clear();
+        world.paint(surface, frameAlpha);
+      }
+    });
+    graphics().rootLayer().add(gameLayer);
 
     initStuff();
   }
@@ -236,15 +244,8 @@ public class CuteGame implements Game, Keyboard.Listener {
 
   @Override
   public void paint(float alpha) {
-    if (world == null) {
-      return;
-    }
-
-    world.setViewOrigin(catGirl.x(alpha), catGirl.y(alpha), catGirl.z(alpha));
-
-    Surface surface = gameLayer.surface();
-    surface.clear();
-    world.paint(surface, alpha);
+    // save this, as we'll use it in our immediate layer renderer
+    frameAlpha = alpha;
   }
 
   private void touchMove(float x, float y) {
@@ -260,11 +261,11 @@ public class CuteGame implements Game, Keyboard.Listener {
 
     Json.Writer w = json().newWriter();
     w.object();
-    w.key("op"); w.value("addTop");
-    w.key("x"); w.value(x);
-    w.key("y"); w.value(y);
-    w.key("type"); w.value(type);
-    w.endObject();
+    w.value("op", "addTop");
+    w.value("x", x);
+    w.value("y", y);
+    w.value("type", type);
+    w.end();
 
     post(w.write());
   }
@@ -274,10 +275,10 @@ public class CuteGame implements Game, Keyboard.Listener {
 
     Json.Writer w = json().newWriter();
     w.object();
-    w.key("op"); w.value("removeTop");
-    w.key("x"); w.value(x);
-    w.key("y"); w.value(y);
-    w.endObject();
+    w.value("op", "removeTop");
+    w.value("x", x);
+    w.value("y", y);
+    w.end();
 
     post(w.write());
   }

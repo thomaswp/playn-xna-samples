@@ -218,13 +218,10 @@ public class CuteWorld {
   public void write(Json.Writer w) {
     w.object();
     {
-      w.key("width");
-      w.value(worldWidth);
-      w.key("height");
-      w.value(worldHeight);
+      w.value("width", worldWidth);
+      w.value("height", worldHeight);
 
-      w.key("stacks");
-      w.array();
+      w.array("stacks");
       for (int y = 0; y < worldHeight; ++y) {
         for (int x = 0; x < worldWidth; ++x) {
           Stack stack = stack(x, y);
@@ -232,12 +229,12 @@ public class CuteWorld {
           for (int z = 0; z < stack.height(); ++z) {
             w.value(stack.tiles[z]);
           }
-          w.endArray();
+          w.end();
         }
       }
-      w.endArray();
+      w.end();
     }
-    w.endObject();
+    w.end();
   }
 
   private int height(int tx, int ty) {
