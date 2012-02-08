@@ -15,6 +15,7 @@
  */
 package playn.showcase.core.peas.entities;
 
+import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class Cloud1 extends Entity {
@@ -67,11 +68,6 @@ public class Cloud1 extends Entity {
   }
 
   @Override
-  String getImageName() {
-    return "Cloud1.png";
-  }
-
-  @Override
   public void initPreLoad(PeaWorld peaWorld) {
     peaWorld.dynamicLayer.add(layer);
   }
@@ -79,4 +75,11 @@ public class Cloud1 extends Entity {
   @Override
   public void initPostLoad(PeaWorld peaWorld) {
   }
+
+  @Override
+  public Image getImage() {
+    return image;
+  }
+
+  private static Image image = loadImage("Cloud1.png");
 }

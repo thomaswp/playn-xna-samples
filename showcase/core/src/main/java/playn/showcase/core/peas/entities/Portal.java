@@ -23,6 +23,7 @@ import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 
+import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class Portal extends StaticPhysicsEntity implements PhysicsEntity.HasContactListener {
@@ -88,8 +89,8 @@ public class Portal extends StaticPhysicsEntity implements PhysicsEntity.HasCont
   }
 
   @Override
-  public String getImageName() {
-    return "teleport.png";
+  public Image getImage() {
+    return image;
   }
 
   @Override
@@ -137,4 +138,6 @@ public class Portal extends StaticPhysicsEntity implements PhysicsEntity.HasCont
     ret.y = vec.x * sTheta + vec.y * cTheta;
     return ret;
   }
+
+  private static Image image = loadImage("teleport.png");
 }

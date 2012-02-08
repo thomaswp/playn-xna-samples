@@ -26,6 +26,7 @@ import org.jbox2d.dynamics.joints.MouseJoint;
 import org.jbox2d.dynamics.joints.MouseJointDef;
 
 import static playn.core.PlayN.graphics;
+import playn.core.Image;
 
 import playn.core.ImageLayer;
 import playn.showcase.core.peas.PeaWorld;
@@ -156,12 +157,14 @@ public class BlockSpring extends Entity implements PhysicsEntity {
   }
 
   @Override
-  public String getImageName() {
-    return "Block-Spring.png";
-  }
-
-  @Override
   public Body getBody() {
     return body;
   }
+
+  @Override
+  public Image getImage() {
+    return image;
+  }
+
+  private static Image image = loadImage("Block-Spring.png");
 }

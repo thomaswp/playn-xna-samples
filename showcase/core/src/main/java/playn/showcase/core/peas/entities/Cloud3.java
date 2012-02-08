@@ -15,6 +15,7 @@
  */
 package playn.showcase.core.peas.entities;
 
+import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class Cloud3 extends Cloud1 {
@@ -31,7 +32,9 @@ public class Cloud3 extends Cloud1 {
   }
 
   @Override
-  String getImageName() {
-    return "Cloud3.png";
+  public Image getImage() {
+    return image;
   }
+
+  private static Image image = loadImage("Cloud3.png");
 }

@@ -23,6 +23,7 @@ import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 
+import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class Pea extends DynamicPhysicsEntity {
@@ -69,8 +70,11 @@ public class Pea extends DynamicPhysicsEntity {
   }
 
   @Override
-  public String getImageName() {
-    //return "chrome.png";
-    return "pea.png";
+  public Image getImage() {
+    return image;
+    // return chrome;
   }
+
+  private static Image image = loadImage("pea.png");
+  // private static Image chrome = resolveImage("chrome.png");
 }

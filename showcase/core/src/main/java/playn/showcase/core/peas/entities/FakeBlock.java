@@ -15,6 +15,7 @@
  */
 package playn.showcase.core.peas.entities;
 
+import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class FakeBlock extends Entity {
@@ -53,11 +54,6 @@ public class FakeBlock extends Entity {
   }
 
   @Override
-  public String getImageName() {
-    return "Block-Normal.png";
-  }
-
-  @Override
   public void initPreLoad(PeaWorld peaWorld) {
     peaWorld.staticLayerBack.add(layer);
   }
@@ -65,4 +61,11 @@ public class FakeBlock extends Entity {
   @Override
   public void initPostLoad(PeaWorld peaWorld) {
   }
+
+  @Override
+  public Image getImage() {
+    return image;
+  }
+
+  private static Image image = loadImage("Block-Normal.png");
 }

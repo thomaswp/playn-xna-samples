@@ -23,6 +23,7 @@ import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 
+import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class Block extends StaticPhysicsEntity {
@@ -74,7 +75,9 @@ public class Block extends StaticPhysicsEntity {
   }
 
   @Override
-  public String getImageName() {
-    return "Block-Normal.png";
+  public Image getImage() {
+    return image;
   }
+
+  private static Image image = loadImage("Block-Normal.png");
 }

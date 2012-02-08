@@ -15,7 +15,7 @@
  */
 package playn.showcase.core.peas.entities;
 
-import static playn.core.PlayN.assetManager;
+import static playn.core.PlayN.assets;
 import static playn.core.PlayN.graphics;
 
 import playn.core.PlayN;
@@ -26,18 +26,16 @@ import playn.core.ResourceCallback;
 import playn.showcase.core.peas.PeaWorld;
 
 public abstract class Entity {
-  ImageLayer layer;
-  Image image;
+  final ImageLayer layer;
   float x, y, angle;
 
   public Entity(final PeaWorld peaWorld, float px, float py, float pangle) {
     this.x = px;
     this.y = py;
     this.angle = pangle;
-    image = assetManager().getImage("peas/images/" + getImageName());
-    layer = graphics().createImageLayer(image);
+    layer = graphics().createImageLayer(getImage());
     initPreLoad(peaWorld);
-    image.addCallback(new ResourceCallback<Image>() {
+    getImage().addCallback(new ResourceCallback<Image>() {
       @Override
       public void done(Image image) {
         // since the image is loaded, we can use its width and height
@@ -89,9 +87,9 @@ public abstract class Entity {
 
   abstract float getHeight();
 
-  abstract String getImageName();
+  public abstract Image getImage();
 
-  public Image getImage() {
-    return image;
+  protected static Image loadImage(String name) {
+    return assets().getImage("peas/images/" + name);
   }
 }

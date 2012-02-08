@@ -23,6 +23,7 @@ import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 
+import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class BlockGel extends Block {
@@ -57,7 +58,9 @@ public class BlockGel extends Block {
   }
 
   @Override
-  public String getImageName() {
-    return "Block-Gel.png";
+  public Image getImage() {
+    return image;
   }
+
+  private static Image image = loadImage("Block-Gel.png");
 }

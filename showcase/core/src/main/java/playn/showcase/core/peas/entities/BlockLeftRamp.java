@@ -23,6 +23,7 @@ import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 
+import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class BlockLeftRamp extends Block {
@@ -56,7 +57,9 @@ public class BlockLeftRamp extends Block {
   }
 
   @Override
-  public String getImageName() {
-    return "Block-LeftRamp.png";
+  public Image getImage() {
+    return image;
   }
+
+  private static Image image = loadImage("Block-LeftRamp.png");
 }
