@@ -46,13 +46,13 @@ public class SnakeDemo extends Demo
     graphics().rootLayer().add(layer);
 
     // create and add background image layer
-    Image bgImage = assetManager().getImage("sprites/bg.png");
+    Image bgImage = assets().getImage("sprites/bg.png");
     ImageLayer bgLayer = graphics().createImageLayer(bgImage);
     bgLayer.setDepth(-1);
     layer.add(bgLayer);
 
     // create our snake segments
-    Image segImage = assetManager().getImage("sprites/pea.png");
+    Image segImage = assets().getImage("sprites/pea.png");
     segments = new ImageLayer[25];
     for (int ii = 0; ii < segments.length; ii++) {
       segments[ii] = graphics().createImageLayer(segImage);

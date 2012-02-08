@@ -25,7 +25,7 @@ public class CuteGameHtml extends HtmlGame {
   @Override
   public void start() {
     HtmlPlatform platform = HtmlPlatform.register();
-    platform.assetManager().setPathPrefix("cutegame/");
+    platform.assets().setPathPrefix("cutegame/");
     PlayN.run(new CuteGame());
   }
 }

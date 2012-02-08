@@ -23,7 +23,7 @@ public class ShowcaseActivity extends GameActivity {
 
   @Override
   public void main(){
-    platform().assetManager().setPathPrefix("playn/showcase/resources");
+    platform().assets().setPathPrefix("playn/showcase/resources");
     PlayN.run(new Showcase());
   }
 }

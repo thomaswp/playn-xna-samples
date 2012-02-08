@@ -28,16 +28,16 @@ public class NoiseGame implements Game {
   public void init() {
     for (int i = 0; i < sounds.length; i++) {
       PlayN.log().info("Create sound " + i + "...");
-      // sounds[i] = PlayN.assetManager().getSound("Bird_Yellow_Flying_1");
-      sounds[i] = PlayN.assetManager().getSound("Bird_Black_Selected_1");
-      // sounds[i] = PlayN.assetManager().getSound("Bird_Red_Selected_1");
+      // sounds[i] = PlayN.assets().getSound("Bird_Yellow_Flying_1");
+      sounds[i] = PlayN.assets().getSound("Bird_Black_Selected_1");
+      // sounds[i] = PlayN.assets().getSound("Bird_Red_Selected_1");
     }
 
     // background
-//    Sound bgSound = PlayN.assetManager().getSound("ambient_green_jungleish");
-    Sound bgSound = PlayN.assetManager().getSound("ambient_red_savannah");
-//    Sound bgSound = PlayN.assetManager().getSound("ambient_white_dryforest");
-//    Sound bgSound = PlayN.assetManager().getSound("ambient_city");
+//    Sound bgSound = PlayN.assets().getSound("ambient_green_jungleish");
+    Sound bgSound = PlayN.assets().getSound("ambient_red_savannah");
+//    Sound bgSound = PlayN.assets().getSound("ambient_white_dryforest");
+//    Sound bgSound = PlayN.assets().getSound("ambient_city");
     bgSound.setLooping(true);
     bgSound.play();
   }

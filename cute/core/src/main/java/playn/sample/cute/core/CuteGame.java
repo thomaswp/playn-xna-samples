@@ -138,14 +138,14 @@ public class CuteGame implements Game, Keyboard.Listener {
   }
 
   private void initStuff() {
-    catGirl = new CuteObject(assetManager().getImage("images/character_cat_girl.png"));
+    catGirl = new CuteObject(assets().getImage("images/character_cat_girl.png"));
     catGirl.setPos(2, 2, 1);
     catGirl.r = 0.3;
     world.addObject(catGirl);
 
     stars = new CuteObject[NUM_STARS];
     for (int i = 0; i < NUM_STARS; ++i) {
-      stars[i] = new CuteObject(assetManager().getImage("images/star.png"));
+      stars[i] = new CuteObject(assets().getImage("images/star.png"));
       stars[i].setPos(Math.random() * world.worldWidth(), Math.random()
           * world.worldHeight(), 10);
       world.addObject(stars[i]);

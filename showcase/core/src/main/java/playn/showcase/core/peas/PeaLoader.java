@@ -40,7 +40,7 @@ public class PeaLoader {
     final PeaWorld peaWorld = new PeaWorld(worldLayer);
 
     // load the level
-    PlayN.assetManager().getText(level, new ResourceCallback<String>() {
+    PlayN.assets().getText(level, new ResourceCallback<String>() {
       @Override
       public void done(String resource) {
         // create an asset watcher that will call our callback when all assets

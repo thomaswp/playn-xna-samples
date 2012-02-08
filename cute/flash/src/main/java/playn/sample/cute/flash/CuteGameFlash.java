@@ -25,7 +25,7 @@ public class CuteGameFlash extends FlashGame {
   @Override
   public void start() {
     FlashPlatform platform = FlashPlatform.register();
-    platform.assetManager().setPathPrefix("cuteflash/");
+    platform.assets().setPathPrefix("cuteflash/");
     PlayN.run(new CuteGame());
   }
 }

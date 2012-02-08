@@ -15,7 +15,7 @@
  */
 package playn.showcase.core.peas;
 
-import static playn.core.PlayN.assetManager;
+import static playn.core.PlayN.assets;
 import static playn.core.PlayN.graphics;
 import static playn.core.PlayN.pointer;
 
@@ -51,7 +51,7 @@ public class PeasDemo extends Demo {
   @Override
   public void init() {
     // load and show our background image
-    Image bgImage = assetManager().getImage("peas/images/bg.png");
+    Image bgImage = assets().getImage("peas/images/bg.png");
     bgLayer = graphics().createImageLayer(bgImage);
     graphics().rootLayer().add(bgLayer);
 

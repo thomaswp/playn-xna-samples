@@ -14,7 +14,6 @@
 package playn.sample.noise.html;
 
 import playn.core.PlayN;
-import playn.html.HtmlAssetManager;
 import playn.html.HtmlGame;
 import playn.html.HtmlPlatform;
 import playn.sample.noise.core.NoiseGame;
@@ -25,10 +24,7 @@ public class NoiseGameHtml extends HtmlGame {
   @Override
   public void start() {
     HtmlPlatform platform = HtmlPlatform.register();
-
-    HtmlAssetManager assets = platform.assetManager();
-    assets.addClientBundle("^", NoiseAutoBundle.INSTANCE);
-
+    platform.assets().addClientBundle("^", NoiseAutoBundle.INSTANCE);
     PlayN.run(new NoiseGame());
   }
 }

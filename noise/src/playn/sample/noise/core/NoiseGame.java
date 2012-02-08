@@ -30,11 +30,11 @@ public class NoiseGame implements Game {
       // Currently:
       // - Java Platform will search for freesoundproject_28917__junggle__btn107.wav
       // - HTML Platform will search for freesoundproject_28917__junggle__btn107.mp3
-      sounds[i] = PlayN.assetManager().getSound("freesoundproject_28917__junggle__btn107");
+      sounds[i] = PlayN.assets().getSound("freesoundproject_28917__junggle__btn107");
       sounds[i].setVolume(.8f);
     }
 
-    bgSound = PlayN.assetManager().getSound("freesoundproject_12742__Leady__reverse_fill_effect");
+    bgSound = PlayN.assets().getSound("freesoundproject_12742__Leady__reverse_fill_effect");
     bgSound.setLooping(true);
     bgSound.play();
   }

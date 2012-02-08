@@ -33,7 +33,7 @@ public class HelloGame implements Game {
   @Override
   public void init() {
     // create and add background image layer
-    Image bgImage = assetManager().getImage("images/bg.png");
+    Image bgImage = assets().getImage("images/bg.png");
     ImageLayer bgLayer = graphics().createImageLayer(bgImage);
     graphics().rootLayer().add(bgLayer);
 
@@ -42,7 +42,7 @@ public class HelloGame implements Game {
     graphics().rootLayer().add(peaLayer);
 
     // preload the pea image into the asset manager cache
-    assetManager().getImage(Pea.IMAGE);
+    assets().getImage(Pea.IMAGE);
 
     // add a listener for pointer (mouse, touch) input
     pointer().setListener(new Pointer.Adapter() {

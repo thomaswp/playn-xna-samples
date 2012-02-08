@@ -15,7 +15,7 @@
  */
 package playn.showcase.core.sprites;
 
-import static playn.core.PlayN.assetManager;
+import static playn.core.PlayN.assets;
 import static playn.core.PlayN.graphics;
 import static playn.core.PlayN.json;
 
@@ -54,7 +54,7 @@ public class SpriteLoader {
    * </pre>
    */
   public static Sprite getSprite(String imagePath, String jsonPath) {
-    Image image = assetManager().getImage(imagePath);
+    Image image = assets().getImage(imagePath);
     final Image[] images = new Image[]{image};
     // temp image to prevent NPE if using the Sprite's Layer (Sprite.getLayer()) before the image
     // has loaded or before a sprite has been set (Sprite.setSprite()).
@@ -62,7 +62,7 @@ public class SpriteLoader {
     final Sprite sprite = new Sprite(graphics().createImageLayer(tempImage));
 
     // load and parse json
-    assetManager().getText(jsonPath, new ResourceCallback<String>() {
+    assets().getText(jsonPath, new ResourceCallback<String>() {
       @Override
       public void done(String json) {
         try {
@@ -132,7 +132,7 @@ public class SpriteLoader {
     });
 
     // load and parse json, then add each image parsed from the json to the asset watcher to load
-    assetManager().getText(jsonPath, new ResourceCallback<String>() {
+    assets().getText(jsonPath, new ResourceCallback<String>() {
       @Override
       public void done(String json) {
         try {
@@ -175,7 +175,7 @@ public class SpriteLoader {
       Asserts.checkNotNull(urls, "No urls provided for sprite images");
       images = new Image[urls.length()];
       for (int i = 0; i < urls.length(); i++) {
-        images[i] = assetManager().getImage(urls.getString(i));
+        images[i] = assets().getImage(urls.getString(i));
       }
     }
 

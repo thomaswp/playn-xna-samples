@@ -44,10 +44,10 @@ public class SpritesDemo extends Demo {
     graphics().rootLayer().add(layer);
 
     // load a sound that we'll play when placing sprites
-    ding = assetManager().getSound("sprites/ding");
+    ding = assets().getSound("sprites/ding");
 
     // create and add background image layer
-    Image bgImage = assetManager().getImage("sprites/bg.png");
+    Image bgImage = assets().getImage("sprites/bg.png");
     ImageLayer bgLayer = graphics().createImageLayer(bgImage);
     layer.add(bgLayer);
 

@@ -15,7 +15,7 @@
  */
 package playn.showcase.core.swirl;
 
-import static playn.core.PlayN.assetManager;
+import static playn.core.PlayN.assets;
 import static playn.core.PlayN.graphics;
 import static playn.core.PlayN.pointer;
 import playn.core.GroupLayer;
@@ -44,8 +44,8 @@ public class SwirlDemo extends Demo {
       }
     });
 
-    Image background = assetManager().getImage("swirl/background.png");
-    Image catgirl = assetManager().getImage("swirl/girlcat.png");
+    Image background = assets().getImage("swirl/background.png");
+    Image catgirl = assets().getImage("swirl/girlcat.png");
 
     groupLayer = graphics().createGroupLayer();
     groupLayer.setOrigin(128, 128);

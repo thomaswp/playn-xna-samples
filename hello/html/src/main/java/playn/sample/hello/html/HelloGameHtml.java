@@ -25,7 +25,7 @@ public class HelloGameHtml extends HtmlGame {
   @Override
   public void start() {
     HtmlPlatform platform = HtmlPlatform.register();
-    platform.assetManager().setPathPrefix("hellogame/");
+    platform.assets().setPathPrefix("hellogame/");
     PlayN.run(new HelloGame());
   }
 }

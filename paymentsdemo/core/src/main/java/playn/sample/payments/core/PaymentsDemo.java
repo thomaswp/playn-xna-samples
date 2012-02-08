@@ -38,7 +38,7 @@ public class PaymentsDemo implements Game {
   @Override
   public void init() {
     // create and add background image layer
-    Image bgImage = assetManager().getImage("images/bg.png");
+    Image bgImage = assets().getImage("images/bg.png");
     ImageLayer bgLayer = graphics().createImageLayer(bgImage);
     graphics().rootLayer().add(bgLayer);
     

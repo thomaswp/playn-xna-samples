@@ -25,7 +25,7 @@ public class ShowcaseHtml extends HtmlGame {
   @Override
   public void start() {
     HtmlPlatform platform = HtmlPlatform.register();
-    platform.assetManager().setPathPrefix("showcase/");
+    platform.assets().setPathPrefix("showcase/");
     PlayN.run(new Showcase());
   }
 }

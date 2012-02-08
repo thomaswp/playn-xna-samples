@@ -272,12 +272,12 @@ public class CuteWorld {
   private void loadImages() {
     // Load tiles.
     for (int i = 0; i < tiles.length; ++i) {
-      tiles[i] = assetManager().getImage(imageRes(tileNames[i]));
+      tiles[i] = assets().getImage(imageRes(tileNames[i]));
     }
 
     // Load shadows.
     for (int i = 0; i < shadows.length; ++i) {
-      shadows[i] = assetManager().getImage(imageRes(shadowNames[i]));
+      shadows[i] = assets().getImage(imageRes(shadowNames[i]));
     }
   }
 

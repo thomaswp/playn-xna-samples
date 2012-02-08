@@ -23,7 +23,7 @@ public class CuteActivity extends GameActivity {
 
   @Override
   public void main(){
-    platform().assetManager().setPathPrefix("playn/sample/cute/resources");
+    platform().assets().setPathPrefix("playn/sample/cute/resources");
     PlayN.run(new CuteGame());
   }
 }

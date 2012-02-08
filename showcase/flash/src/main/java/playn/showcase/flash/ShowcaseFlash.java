@@ -25,7 +25,7 @@ public class ShowcaseFlash extends FlashGame {
   @Override
   public void start() {
     FlashPlatform platform = FlashPlatform.register();
-    platform.assetManager().setPathPrefix("showcaseflash/");
+    platform.assets().setPathPrefix("showcaseflash/");
     PlayN.run(new Showcase());
   }
 }

@@ -21,7 +21,7 @@ public class NoiseGameJava {
 
   public static void main(String[] args) {
     JavaPlatform platform = JavaPlatform.register();
-    platform.assetManager().setPathPrefix("war/WEB-INF/classes");
+    platform.assets().setPathPrefix("war/WEB-INF/classes");
     PlayN.run(new NoiseGame());
   }
 }
