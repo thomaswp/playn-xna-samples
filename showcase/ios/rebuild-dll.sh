@@ -18,8 +18,8 @@ mono $IKVM_HOME/bin/ikvmc.exe -nostdlib -debug -target:library -out:showcase-cor
     -r:$MONO_PATH/Mono.Data.Sqlite.dll \
     $MAVEN_REPO/com/samskivert/pythagoras/1.1/pythagoras-1.1.jar \
     $MAVEN_REPO/com/threerings/react/1.1/react-1.1.jar \
-    $MAVEN_REPO/com/threerings/tripleplay/1.1-SNAPSHOT/tripleplay-1.1-SNAPSHOT.jar \
-    $MAVEN_REPO/com/googlecode/playn/playn-core/1.1-SNAPSHOT/playn-core-1.1-SNAPSHOT.jar \
-    $MAVEN_REPO/com/googlecode/playn/playn-jbox2d/1.1-SNAPSHOT/playn-jbox2d-1.1-SNAPSHOT.jar \
-    $MAVEN_REPO/com/googlecode/playn/playn-ios/1.1-SNAPSHOT/playn-ios-1.1-SNAPSHOT.jar \
+    $MAVEN_REPO/com/threerings/tripleplay/1.1/tripleplay-1.1.jar \
+    $MAVEN_REPO/com/googlecode/playn/playn-core/1.1/playn-core-1.1.jar \
+    $MAVEN_REPO/com/googlecode/playn/playn-jbox2d/1.1/playn-jbox2d-1.1.jar \
+    $MAVEN_REPO/com/googlecode/playn/playn-ios/1.1/playn-ios-1.1.jar \
     ../core/target/playn-showcase-core-1.0-SNAPSHOT.jar
