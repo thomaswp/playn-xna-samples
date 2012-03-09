@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project name="build-common" default="compile" xmlns:artifact="urn:maven-artifact-ant">
-  <property name="src.dir"     value="src"/>
+  <property name="src.dir"     value="src/main/java"/>
   <property name="war.dir"     value="war"/>
   <property name="target.dir"  value="target"/>
   <property name="classes.dir" value="${target.dir}/classes"/>
