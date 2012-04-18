@@ -24,9 +24,8 @@ public class GLDemoHtml extends HtmlGame {
 
 	@Override
 	public void start() {
-	  HtmlPlatform platform = HtmlPlatform.register();
+	  HtmlPlatform.register();
 	  GLDemo glDemo = new GLDemo();
-
-	  PlayN.run(new GLDemo());
+	  PlayN.run(glDemo);
 	}
 }

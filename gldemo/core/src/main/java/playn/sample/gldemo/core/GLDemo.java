@@ -1,3 +1,19 @@
+/**
+ * Copyright 2010 The PlayN Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package playn.sample.gldemo.core;
 
 import static playn.core.PlayN.graphics;
@@ -10,26 +26,36 @@ import playn.core.Game;
 import playn.core.PlayN;
 import playn.core.gl.GL20;
 
+/**
+ * A simple demo for obtaining and using a GL ES 2.0 context in PlayN, based on 
+ * http://developer.android.com/resources/tutorials/opengl/opengl-es20.html
+ * 
+ * The PlayN GL ES 2.0 context does not work in GWT Development mode. 
+ * For alternatives, see 
+ * http://code.google.com/p/playn/wiki/GameDebuggingOptions
+ */
 public class GLDemo implements Game {
-  private final String vertexShaderCode = 
+  private final String VERTEX_SHADER_CODE = 
       "attribute vec4 vPosition; \n" + 
       "void main(){              \n" + 
-      " gl_Position = vPosition; \n" + 
+      "  gl_Position = vPosition; \n" + 
       "}                         \n";
 
-  private final String fragmentShaderCode = 
+  private final String FRAGMENT_SHADER_CODE = 
       "#ifdef GL_ES\n" +
       "precision highp float;\n" +
       "#endif\n" +
       "void main(){              \n" +
-      " gl_FragColor = vec4 (0.64, 0.77, 0.22, 1.0); \n" +
+      "  gl_FragColor = vec4 (0.64, 0.77, 0.22, 1.0); \n" +
       "}                         \n";
 
   private GL20 gl;
   private FloatBuffer triangleVB;
 
-  private int mProgram;
-  private int maPositionHandle;
+  private int programHandle;
+  private int positionHandle;
+  private float time;
+  private float background;
 
   @Override
   public void init() {
@@ -39,75 +65,65 @@ public class GLDemo implements Game {
 
     // Set up GL
     
-    int vertexShader = loadShader(GL20.GL_VERTEX_SHADER, vertexShaderCode);
-    int fragmentShader = loadShader(GL20.GL_FRAGMENT_SHADER, fragmentShaderCode);
+    int vertexShader = loadShader(GL20.GL_VERTEX_SHADER, VERTEX_SHADER_CODE);
+    int fragmentShader = loadShader(GL20.GL_FRAGMENT_SHADER, FRAGMENT_SHADER_CODE);
 
-    mProgram = gl.glCreateProgram(); // create empty OpenGL Program
-    gl.glAttachShader(mProgram, vertexShader); // add the vertex shader to
+    programHandle = gl.glCreateProgram(); // create empty OpenGL Program
+    gl.glAttachShader(programHandle, vertexShader); // add the vertex shader to
                                                // program
-    gl.glAttachShader(mProgram, fragmentShader); // add the fragment shader to
+    gl.glAttachShader(programHandle, fragmentShader); // add the fragment shader to
                                                  // program
-    gl.glLinkProgram(mProgram); // creates OpenGL program executables
+    gl.glLinkProgram(programHandle); // creates OpenGL program executables
 
     // get handle to the vertex shader's vPosition member
-    maPositionHandle = gl.glGetAttribLocation(mProgram, "vPosition");
-    
-    
-    
-    // Set up the triangle array
-    
-    float triangleCoords[] = {
-        // X, Y, Z
-        -0.5f, -0.25f, 0, 0.5f, -0.25f, 0, 0.0f, 0.56f, 0 };
-
-    // initialize vertex Buffer for triangle
-    ByteBuffer vbb = ByteBuffer.allocateDirect(
-    // (# of coordinate values * 4 bytes per float)
-        triangleCoords.length * 4);
-    vbb.order(ByteOrder.nativeOrder());// use the device hardware's native byte
-                                       // order
-    triangleVB = vbb.asFloatBuffer(); // create a floating point buffer from the
-                                      // ByteBuffer
-    triangleVB.put(triangleCoords); // add the coordinates to the FloatBuffer
-    triangleVB.position(0); // set the buffer to read the first coordinate
+    positionHandle = gl.glGetAttribLocation(programHandle, "vPosition");
 
     checkGlError("init");
+
+    // Set up the triangle array (X, Y, Z, ...)
+    float triangleCoords[] = {
+        -0.5f, -0.25f, 0, 0.5f, -0.25f, 0, 0.0f, 0.56f, 0 };
+
+    // initialize vertex Buffer for triangle  (# of coordinate values * 4 bytes per float)
+    ByteBuffer vbb = ByteBuffer.allocateDirect(triangleCoords.length * 4);
     
-    PlayN.log().info("init end");
+    // use the device hardware's native byte order
+    vbb.order(ByteOrder.nativeOrder());
+    
+    // create a floating point buffer from the ByteBuffer
+    triangleVB = vbb.asFloatBuffer();
+    
+    // add the coordinates to the FloatBuffer
+    triangleVB.put(triangleCoords);
+    
+    // set the buffer to read the first coordinate
+    triangleVB.position(0); 
   }
 
   @Override
   public void update(float delta) {
-    PlayN.log().info("update; delta: " + delta);
+    time += delta;
+    // Change the background shade, depending on the elapsed time.
+    background = (float) ((Math.sin(time / 1000.f) + 1) / 2);  
   }
 
   @Override
   public void paint(float alpha) {
-    PlayN.log().info("paint start; alpha: " + alpha);
-    
-    gl.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+    gl.glClearColor(background, background, background, 1.0f);
     gl.glViewport(0, 0, graphics().width(), graphics().height());
     gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
     
-    gl.glUseProgram(mProgram);
+    gl.glUseProgram(programHandle);
 
-    gl.glVertexAttribPointer(maPositionHandle, 3, GL20.GL_FLOAT, false, 12, triangleVB);
-    gl.glEnableVertexAttribArray(maPositionHandle);
+    gl.glVertexAttribPointer(positionHandle, 3, GL20.GL_FLOAT, false, 12, triangleVB);
+    gl.glEnableVertexAttribArray(positionHandle);
 
     // Draw the triangle
     gl.glDrawArrays(GL20.GL_TRIANGLES, 0, 3);
-    
-    gl.glFlush();
-    gl.glFinish();
-    
-    PlayN.log().info("paint end");
-    
-    checkGlError("paint");
   }
 
   @Override
   public int updateRate() {
-    // TODO Auto-generated method stub
     return 0;
   }
 
