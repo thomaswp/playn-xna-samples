@@ -16,11 +16,10 @@
 package playn.showcase.core.text;
 
 import playn.core.CanvasImage;
-import playn.core.CanvasLayer;
-import playn.core.Layer;
+import playn.core.Font;
 import playn.core.GroupLayer;
 import playn.core.ImageLayer;
-import playn.core.Font;
+import playn.core.Layer;
 import playn.core.TextFormat;
 import playn.core.TextLayout;
 import static playn.core.PlayN.*;
@@ -121,9 +120,9 @@ public class TextDemo extends Demo {
   }
 
   protected Layer createTextLayer(TextLayout layout) {
-    CanvasLayer layer = graphics().createCanvasLayer(
-      (int)Math.ceil(layout.width()), (int)Math.ceil(layout.height()));
-    layer.canvas().drawText(layout, 0, 0);
-    return layer;
+    CanvasImage image = graphics().createImage((int)Math.ceil(layout.width()),
+                                               (int)Math.ceil(layout.height()));
+    image.canvas().drawText(layout, 0, 0);
+    return graphics().createImageLayer(image);
   }
 }

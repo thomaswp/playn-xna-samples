@@ -31,11 +31,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
 
-import static playn.core.PlayN.graphics;
-
-import playn.core.CanvasLayer;
+import playn.core.CanvasImage;
 import playn.core.DebugDrawBox2D;
 import playn.core.GroupLayer;
+import static playn.core.PlayN.graphics;
 
 import playn.showcase.core.peas.entities.Entity;
 import playn.showcase.core.peas.entities.PhysicsEntity;
@@ -91,12 +90,11 @@ public class PeaWorld implements ContactListener {
     wallRight.createFixture(wallRightShape, 0.0f);
 
     if (showDebugDraw) {
-      CanvasLayer canvasLayer =
-          graphics().createCanvasLayer((int) (width / PeasDemo.physUnitPerScreenUnit),
-              (int) (height / PeasDemo.physUnitPerScreenUnit));
-      graphics().rootLayer().add(canvasLayer);
+      CanvasImage image = graphics().createImage((int) (width / PeasDemo.physUnitPerScreenUnit),
+                                                 (int) (height / PeasDemo.physUnitPerScreenUnit));
+      graphics().rootLayer().add(graphics().createImageLayer(image));
       debugDraw = new DebugDrawBox2D();
-      debugDraw.setCanvas(canvasLayer);
+      debugDraw.setCanvas(image);
       debugDraw.setFlipY(false);
       debugDraw.setStrokeAlpha(150);
       debugDraw.setFillAlpha(75);
@@ -118,7 +116,7 @@ public class PeaWorld implements ContactListener {
 
   public void paint(float delta) {
     if (showDebugDraw) {
-      debugDraw.getCanvas().canvas().clear();
+      debugDraw.getCanvas().clear();
       world.drawDebugData();
     }
     for (Entity e : entities) {

@@ -194,10 +194,8 @@ public class Sprite {
    */
   private void updateLayer() {
     if (current != null) {
-      layer.setImage(current.image());
-      layer.setWidth(current.width());
-      layer.setHeight(current.height());
-      layer.setSourceRect(current.x(), current.y(), current.width(), current.height());
+      layer.setImage(current.image().subImage(current.x(), current.y(),
+                                              current.width(), current.height()));
     }
   }
 }

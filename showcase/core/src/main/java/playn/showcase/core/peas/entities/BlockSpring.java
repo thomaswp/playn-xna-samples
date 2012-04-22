@@ -61,19 +61,13 @@ public class BlockSpring extends Entity implements PhysicsEntity {
 
   @Override
   public void initPostLoad(final PeaWorld peaWorld) {
-    layerBase = graphics().createImageLayer(layer.image());
-
     // set our layer base settings/source
-    layerBase.setWidth(layer.image().width());
-    layerBase.setHeight(30);
-    layerBase.setSourceRect(0, 31, 71, 30);
+    layerBase = graphics().createImageLayer(layer.image().subImage(0, 31, 71, 30));
     layerBase.setOrigin(image.width() / 2f, -30 + image.height() / 2f);
     layerBase.setScale(getWidth() / image.width(), getHeight() / image.height());
 
     // set our top layer settings/source
-    layer.setWidth(layer.image().width());
-    layer.setHeight(31);
-    layer.setSourceRect(0, 0, 71, 31);
+    layer.setImage(layer.image().subImage(0, 0, 71, 31));
     layer.setOrigin(image.width() / 2f, image.height() / 2f);
     layer.setScale(getWidth() / image.width(), getHeight() / image.height());
 

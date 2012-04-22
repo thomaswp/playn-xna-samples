@@ -29,9 +29,8 @@ import tripleplay.ui.Group;
 import tripleplay.ui.Interface;
 import tripleplay.ui.Label;
 import tripleplay.ui.Root;
+import tripleplay.ui.SimpleStyles;
 import tripleplay.ui.Style;
-import tripleplay.ui.Styles;
-import tripleplay.ui.Stylesheet;
 import tripleplay.ui.layout.AxisLayout;
 
 import static playn.core.PlayN.*;
@@ -71,66 +70,31 @@ public class Menu extends Demo
     layer = graphics().createGroupLayer();
     graphics().rootLayer().add(layer);
 
-    // Flash does not support the text rendering needed to use the TriplePlay UI framework
-    if (platformType() != Platform.Type.FLASH) {
-      // create our UI manager and configure it to process pointer events
-      iface = new Interface(null);
-      pointer().setListener(iface.plistener);
+    // create our UI manager and configure it to process pointer events
+    iface = new Interface();
 
-      // define our root stylesheet
-      Styles buttonStyles = Styles.none().
-        add(Style.BACKGROUND.is(Background.solid(0xFFFFFFFF, 5))).
-        addSelected(Style.BACKGROUND.is(Background.solid(0xFFCCCCCC, 6, 4, 4, 6)));
-      Stylesheet rootSheet = Stylesheet.builder().
-        add(Button.class, buttonStyles).
-        create();
+    // create our demo interface
+    Root root = iface.createRoot(AxisLayout.vertical().gap(15), SimpleStyles.newSheet());
+    root.setSize(graphics().width(), graphics().height());
+    root.addStyles(Style.BACKGROUND.is(Background.solid(0xFF99CCFF).inset(5)));
+    layer.add(root.layer);
 
-      // create our demo interface
-      Root root = iface.createRoot(AxisLayout.vertical().gap(15), rootSheet);
-      root.setSize(graphics().width(), graphics().height());
-      root.addStyles(Styles.make(Style.BACKGROUND.is(Background.solid(0xFF99CCFF, 5))));
-      layer.add(root.layer);
+    Group buttons;
+    root.add(new Label("PlayN Demos:"),
+             buttons = new Group(AxisLayout.vertical().offStretch()),
+             new Label("ESC/BACK key returns to menu from demo"),
+             new Label("(renderer: " + graphics().getClass().getName() + ")"));
 
-      Group buttons;
-      root.add(new Label("PlayN Demos:"),
-               buttons = new Group(AxisLayout.vertical().offStretch()),
-               new Label("ESC/BACK key returns to menu from demo"),
-               new Label("(renderer: " + graphics().getClass().getName() + ")"));
-
-      int key = 1;
-      for (final Demo demo : showcase.demos) {
-        Button button = new Button(key++ + " - " + demo.name());
-        buttons.add(button);
-        button.clicked().connect(new UnitSlot() {
-          @Override
-          public void onEmit() {
-            showcase.activateDemo(demo);
-          }
-        });
-      }
-
-    } else {
-      // display a solid background
-      int width = graphics().width(), height = graphics().height();
-      CanvasLayer bg = graphics().createCanvasLayer(width, height);
-      bg.canvas().setFillColor(0xFF99CCFF);
-      bg.canvas().fillRect(0, 0, width, height);
-      layer.add(bg);
-
-      // draw a primitive menu
-      bg.canvas().setFillColor(0xFF000000);
-      float ypos = 25;
-      bg.canvas().drawText("PlayN Demos:", 25, ypos);
-      ypos += 25;
-
-      int key = 1;
-      for (Demo demo : showcase.demos) {
-        bg.canvas().drawText(key++ + " - " + demo.name(), 25, ypos);
-        ypos += 25;
-      }
-      ypos += 25;
-      bg.canvas().drawText(
-        "Press # key to run demo, ESC/BACK key returns to menu from demo", 25, ypos);
+    int key = 1;
+    for (final Demo demo : showcase.demos) {
+      Button button = new Button(key++ + " - " + demo.name());
+      buttons.add(button);
+      button.clicked().connect(new UnitSlot() {
+        @Override
+        public void onEmit() {
+          showcase.activateDemo(demo);
+        }
+      });
     }
   }
 

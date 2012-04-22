@@ -39,8 +39,6 @@ public abstract class Entity {
       @Override
       public void done(Image image) {
         // since the image is loaded, we can use its width and height
-        layer.setWidth(image.width());
-        layer.setHeight(image.height());
         layer.setOrigin(image.width() / 2f, image.height() / 2f);
         layer.setScale(getWidth() / image.width(), getHeight() / image.height());
         layer.setTranslation(x, y);

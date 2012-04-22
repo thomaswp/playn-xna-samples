@@ -68,9 +68,9 @@ public class PeaLoader {
         for (int i = 0; i < jsonEntities.length(); i++) {
           Json.Object jsonEntity = jsonEntities.getObject(i);
           String type = jsonEntity.getString("type");
-          float x = (float) jsonEntity.getNumber("x");
-          float y = (float) jsonEntity.getNumber("y");
-          float a = (float) jsonEntity.getNumber("a");
+          float x = jsonEntity.getNumber("x");
+          float y = jsonEntity.getNumber("y");
+          float a = jsonEntity.getNumber("a");
 
           Entity entity = null;
           if (Pea.TYPE.equalsIgnoreCase(type)) {
