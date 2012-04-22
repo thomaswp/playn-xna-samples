@@ -24,6 +24,7 @@ import playn.core.Game;
 import playn.core.Key;
 import playn.core.Keyboard;
 import playn.core.PlayN;
+import playn.core.Touch;
 
 import playn.showcase.core.peas.PeasDemo;
 import playn.showcase.core.snake.SnakeDemo;
@@ -80,6 +81,17 @@ public class Showcase implements Game
         }
       }
     });
+
+    try {
+      PlayN.touch().setListener(new Touch.Adapter() {
+        public void onTouchStart(Touch.Event[] touches) {
+          if (touches.length > 1)
+            activateDemo(menuDemo);
+        }
+      });
+    } catch (UnsupportedOperationException e) {
+      // no support for touch; no problem
+    }
 
     activateDemo(menuDemo);
   }

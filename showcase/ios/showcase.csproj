@@ -60,11 +60,11 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="OpenTK" />
-    <Reference Include="showcase-core">
-      <HintPath>showcase-core.dll</HintPath>
+    <Reference Include="playn-showcase-ios-1.0-SNAPSHOT">
+      <HintPath>bin\playn-showcase-ios-1.0-SNAPSHOT.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Core">
-      <HintPath>..\..\..\..\projects\ikvm-monotouch\bin\IKVM.OpenJDK.Core.dll</HintPath>
+      <HintPath>..\..\..\ikvm-monotouch\bin\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Data" />

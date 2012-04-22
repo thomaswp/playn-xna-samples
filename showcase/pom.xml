@@ -22,9 +22,8 @@
     <module>core</module>
     <module>java</module>
     <module>html</module>
-<!--
-    <module>flash</module>
--->
+    <!-- <module>flash</module> -->
     <module>android</module>
+    <module>ios</module>
   </modules>
 </project>
