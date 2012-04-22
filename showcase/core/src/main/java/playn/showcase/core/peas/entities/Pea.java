@@ -76,5 +76,5 @@ public class Pea extends DynamicPhysicsEntity {
   }
 
   private static Image image = loadImage("pea.png");
-  // private static Image chrome = resolveImage("chrome.png");
+  // private static Image chrome = loadImage("chrome.png");
 }
