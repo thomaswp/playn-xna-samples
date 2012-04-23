@@ -34,9 +34,17 @@
   <!-- so we have to do a bunch of manual dependency management in here -->
 
   <target name="-prepare-java" depends="-prepare">
+    <condition property="lwjgl.platform" value="linux">
+      <and><os family="unix"/><not><os family="mac"/></not></and>
+    </condition>
+    <condition property="lwjgl.platform" value="osx"><os family="mac"/></condition>
+    <condition property="lwjgl.platform" value="windows"><os family="windows"/></condition>
+    <echo>Platform: ${lwjgl.platform}</echo>
     <artifact:dependencies pathId="java-extras.classpath">
       <dependency groupId="com.googlecode.playn" artifactId="playn-java"
                   version="${pom.properties.playn.version}"/>
+      <dependency groupId="org.lwjgl.lwjgl" artifactId="lwjgl-platform"
+                  classifier="natives-${lwjgl.platform}" version="${pom.properties.lwjgl.version}"/>
     </artifact:dependencies>
     <path id="java.classpath">
       <path refid="core.classpath"/>
@@ -168,8 +176,28 @@
     </java>
   </target>
 
+  <!-- these shenanigans are needed to use a property in the name of another property -->
+  <macrodef name="resolveNatives">
+    <attribute name="platform"/>
+    <sequential>
+      <property name="natives.prop" value="org.lwjgl.lwjgl:lwjgl-platform:jar:natives-@{platform}"/>
+      <applyProp property="natives.jar" value="${natives.prop}" />
+    </sequential>
+  </macrodef>
+  <macrodef name="applyProp">
+    <attribute name="property"/>
+    <attribute name="value"/>
+    <sequential>
+      <property name="@{property}" value="${@{value}}"/>
+    </sequential>
+  </macrodef>
+
   <target name="run-java" depends="compile" description="Runs game in JVM.">
+    <resolveNatives platform="${lwjgl.platform}"/>
+    <property name="natives.jar" value="${natives.prop}"/>
+    <unjar src="${natives.jar}" dest="${target.dir}/natives"/>
     <java fork="true" dir="core" classname="${java.classname}">
+      <sysproperty key="java.library.path" value="../${target.dir}/natives"/>
       <classpath>
         <pathelement location="${classes.dir}"/>
         <path refid="java.classpath"/>
