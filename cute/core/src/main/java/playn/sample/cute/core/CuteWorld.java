@@ -446,8 +446,8 @@ public class CuteWorld {
       if ((int) o.z == tz) {
         int px = worldToPixelX(surf, o.x(alpha));
         int py = worldToPixelY(surf, o.y(alpha), o.z(alpha));
-        int baseX = o.img.width() / 2;
-        int baseY = o.img.height() - OBJECT_BASE;
+        float baseX = o.img.width() / 2;
+        float baseY = o.img.height() - OBJECT_BASE;
         surf.drawImage(o.img, px - baseX, py - baseY);
       }
     }
@@ -504,12 +504,12 @@ public class CuteWorld {
     }
   }
 
-  private double pixelToWorldX(Surface surf, int x) {
+  private double pixelToWorldX(Surface surf, float x) {
     double center = surf.width() * 0.5;
     return (int) (((viewOriginX * TILE_WIDTH) + x - center) / TILE_WIDTH);
   }
 
-  private double pixelToWorldY(Surface surf, int y, double z) {
+  private double pixelToWorldY(Surface surf, float y, double z) {
     double center = surf.height() * 0.5;
     return (y + (viewOriginY * TILE_HEIGHT - viewOriginZ * TILE_DEPTH)
         + (z * TILE_DEPTH) - center)
