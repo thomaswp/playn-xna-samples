@@ -17,5 +17,7 @@
 	<array>
 		<string>assets/text/Museo.otf</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>
