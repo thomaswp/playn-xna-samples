@@ -56,7 +56,7 @@ public class CuteGame implements Game, Keyboard.Listener {
 
   @Override
   public void init() {
-    graphics().setSize(800, 600);
+    // graphics().setSize(800, 600);
 
     keyboard().setListener(this);
     pointer().setListener(new Pointer.Listener() {
@@ -249,8 +249,8 @@ public class CuteGame implements Game, Keyboard.Listener {
   }
 
   private void touchMove(float x, float y) {
-    float cx = graphics().screenWidth() / 2;
-    float cy = graphics().screenHeight() / 2;
+    float cx = graphics().width() / 2;
+    float cy = graphics().height() / 2;
 
     touchVectorX = (x - cx) * 1.0f / cx;
     touchVectorY = (y - cy) * 1.0f / cy;
