@@ -6,25 +6,21 @@ using playn.ios;
 using playn.core;
 using playn.showcase.core;
 
-namespace playn.showcase.ios
-{
-	[Register ("AppDelegate")]
-	public partial class AppDelegate : UIApplicationDelegate
-	{
-		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
-		{
-			IOSPlatform.register(app);
-			Showcase game = new Showcase();
-			PlayN.run(game);
-    		return true;
-		}
-	}
+namespace playn.showcase.ios {
 
-	public class Application
-	{
-		static void Main (string[] args)
-		{
-			UIApplication.Main (args, null, "AppDelegate");
-		}
-	}
+  [Register ("AppDelegate")]
+  public partial class AppDelegate : UIApplicationDelegate {
+    public override bool FinishedLaunching (UIApplication app, NSDictionary options) {
+      var pf = IOSPlatform.register(app);
+      pf.assets().setPathPrefix("assets");
+      PlayN.run(new Showcase());
+      return true;
+    }
+  }
+
+  public class Application {
+    static void Main (string[] args) {
+      UIApplication.Main (args, null, "AppDelegate");
+    }
+  }
 }

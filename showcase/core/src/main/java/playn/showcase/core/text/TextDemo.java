@@ -56,7 +56,7 @@ public class TextDemo extends Demo {
     // add some text to said soothing background
     final float MARGIN = 10;
     float xpos = MARGIN, maxYPos = 0;
-    for (String name : new String[] { "Helvetica", "Museo" }) {
+    for (String name : new String[] { "Helvetica", "Museo-300" }) {
       float ypos = MARGIN, maxWidth = 0;
       for (Font.Style style : Font.Style.values()) {
         for (float size : new float[] { 12f, 24f, 32f }) {

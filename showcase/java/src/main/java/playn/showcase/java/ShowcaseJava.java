@@ -24,7 +24,7 @@ public class ShowcaseJava {
   public static void main(String[] args) {
     JavaPlatform platform = JavaPlatform.register();
     platform.assets().setPathPrefix("playn/showcase/resources");
-    platform.graphics().registerFont("Museo", "text/Museo.ttf");
+    platform.graphics().registerFont("Museo-300", "text/Museo.otf");
     PlayN.run(new Showcase());
   }
 }

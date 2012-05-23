@@ -60,11 +60,11 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="OpenTK" />
-    <Reference Include="playn-showcase-ios-1.0-SNAPSHOT">
-      <HintPath>bin\playn-showcase-ios-1.0-SNAPSHOT.dll</HintPath>
+    <Reference Include="playn-showcase-ios">
+      <HintPath>bin\playn-showcase-ios.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Core">
-      <HintPath>..\..\..\ikvm-monotouch\bin\IKVM.OpenJDK.Core.dll</HintPath>
+      <HintPath>bin\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Data" />
@@ -77,71 +77,28 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\bg.png">
-      <Link>peas\images\bg.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\Block-Gel.png">
-      <Link>peas\images\Block-Gel.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\Block-LeftRamp.png">
-      <Link>peas\images\Block-LeftRamp.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\Block-Normal.png">
-      <Link>peas\images\Block-Normal.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\Block-RightRamp.png">
-      <Link>peas\images\Block-RightRamp.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\Block-Spring.png">
-      <Link>peas\images\Block-Spring.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\chrome.png">
-      <Link>peas\images\chrome.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\Cloud1.png">
-      <Link>peas\images\Cloud1.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\Cloud3.png">
-      <Link>peas\images\Cloud3.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\pea.png">
-      <Link>peas\images\pea.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\peaglow.png">
-      <Link>peas\images\peaglow.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\images\teleport.png">
-      <Link>peas\images\teleport.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\peas\levels\level1.json">
-      <Link>peas\levels\level1.json</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\sprites\bg.png">
-      <Link>sprites\bg.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\sprites\pea.png">
-      <Link>sprites\pea.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\sprites\peasprite.json">
-      <Link>sprites\peasprite.json</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\sprites\peasprite2.json">
-      <Link>sprites\peasprite2.json</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\sprites\peasprites.png">
-      <Link>sprites\peasprites.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\sprites\peasprites2.png">
-      <Link>sprites\peasprites2.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\sprites\peasprites3.png">
-      <Link>sprites\peasprites3.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\swirl\background.png">
-      <Link>swirl\background.png</Link>
-    </Content>
-    <Content Include="..\core\src\main\java\playn\showcase\resources\swirl\girlcat.png">
-      <Link>swirl\girlcat.png</Link>
-    </Content>
+    <Content Include="assets\peas\images\bg.png" />
+    <Content Include="assets\peas\images\Block-Gel.png" />
+    <Content Include="assets\peas\images\Block-LeftRamp.png" />
+    <Content Include="assets\peas\images\Block-Normal.png" />
+    <Content Include="assets\peas\images\Block-RightRamp.png" />
+    <Content Include="assets\peas\images\Block-Spring.png" />
+    <Content Include="assets\peas\images\chrome.png" />
+    <Content Include="assets\peas\images\Cloud1.png" />
+    <Content Include="assets\peas\images\Cloud3.png" />
+    <Content Include="assets\peas\images\pea.png" />
+    <Content Include="assets\peas\images\peaglow.png" />
+    <Content Include="assets\peas\images\teleport.png" />
+    <Content Include="assets\peas\levels\level1.json" />
+    <Content Include="assets\sprites\bg.png" />
+    <Content Include="assets\sprites\pea.png" />
+    <Content Include="assets\sprites\peasprite.json" />
+    <Content Include="assets\sprites\peasprite2.json" />
+    <Content Include="assets\sprites\peasprites.png" />
+    <Content Include="assets\sprites\peasprites2.png" />
+    <Content Include="assets\sprites\peasprites3.png" />
+    <Content Include="assets\swirl\background.png" />
+    <Content Include="assets\swirl\girlcat.png" />
+    <Content Include="assets\text\Museo.otf" />
   </ItemGroup>
 </Project>
