@@ -16,7 +16,9 @@
 package playn.showcase.android;
 
 import playn.android.GameActivity;
+import playn.core.Font;
 import playn.core.PlayN;
+
 import playn.showcase.core.Showcase;
 
 public class ShowcaseActivity extends GameActivity {
@@ -24,6 +26,7 @@ public class ShowcaseActivity extends GameActivity {
   @Override
   public void main(){
     platform().assets().setPathPrefix("playn/showcase/resources");
+    platform().graphics().registerFont("text/Museo.otf", "Museo-300", Font.Style.PLAIN);
     PlayN.run(new Showcase());
   }
 }
