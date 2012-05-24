@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.googlecode.playn</groupId>
     <artifactId>playn-project</artifactId>
-    <version>1.3</version>
+    <version>1.4-SNAPSHOT</version>
   </parent>
 
   <artifactId>playn-showcase</artifactId>
@@ -15,15 +15,35 @@
   <packaging>pom</packaging>
 
   <properties>
-    <playn.version>1.3</playn.version>
+    <playn.version>1.4-SNAPSHOT</playn.version>
   </properties>
 
   <modules>
     <module>core</module>
-    <module>java</module>
-    <module>html</module>
-    <!-- <module>flash</module> -->
-    <module>android</module>
-    <module>ios</module>
   </modules>
+
+  <profiles>
+    <profile>
+      <id>java</id>
+      <activation><activeByDefault>true</activeByDefault></activation>
+      <modules><module>java</module></modules>
+    </profile>
+    <profile>
+      <id>android</id>
+      <modules><module>android</module></modules>
+    </profile>
+    <profile>
+      <id>ios</id>
+      <modules><module>ios</module></modules>
+    </profile>
+    <profile>
+      <id>html</id>
+      <modules><module>html</module></modules>
+    </profile>
+    <profile>
+      <id>flash</id>
+      <modules><module>flash</module></modules>
+    </profile>
+  </profiles>
+
 </project>

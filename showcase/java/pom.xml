@@ -13,6 +13,10 @@
   <packaging>jar</packaging>
   <name>PlayN Showcase Java</name>
 
+  <properties>
+    <mainClass>playn.showcase.java.ShowcaseJava</mainClass>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>com.googlecode.playn</groupId>
@@ -42,37 +46,27 @@
           </execution>
         </executions>
       </plugin>
+
+      <!-- allows testing of Java backend via: mvn test -->
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <configuration>
+              <target>
+                <java fork="true" classname="${mainClass}" classpathref="maven.test.classpath">
+                  <sysproperty key="java.library.path" value="target/natives"/>
+                </java>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <!-- allows testing of Java backend via: mvn test -Ptest-java -->
-    <profile>
-      <id>test-java</id>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <version>1.6</version>
-            <executions>
-              <execution>
-                <phase>test</phase>
-                <configuration>
-                  <target>
-                    <java fork="true" classname="playn.showcase.java.ShowcaseJava"
-                          classpathref="maven.test.classpath">
-                      <sysproperty key="java.library.path" value="target/natives"/>
-                    </java>
-                  </target>
-                </configuration>
-                <goals>
-                  <goal>run</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 </project>
