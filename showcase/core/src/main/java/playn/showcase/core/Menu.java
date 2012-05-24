@@ -15,11 +15,9 @@
  */
 package playn.showcase.core;
 
-import playn.core.CanvasLayer;
 import playn.core.GroupLayer;
 import playn.core.Key;
 import playn.core.Keyboard;
-import playn.core.Platform;
 
 import react.UnitSlot;
 
