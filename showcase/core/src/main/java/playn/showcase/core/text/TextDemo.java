@@ -63,7 +63,7 @@ public class TextDemo extends Demo {
           Font font = graphics().createFont(name, style, size);
           TextFormat format = new TextFormat().withFont(font);
           TextLayout layout = graphics().layoutText("Hello PlayN World", format);
-          Layer layer = createTextLayer(layout);
+          Layer layer = createTextLayer(layout, 0xFF000000);
           layer.setTranslation(xpos, ypos);
           base.add(layer);
           ypos += layout.height();
@@ -81,10 +81,8 @@ public class TextDemo extends Demo {
     String text = "Text can also be wrapped at a specified width.\n\n" +
       "And wrapped manually at newlines.\nLike this.";
     TextLayout layout = graphics().layoutText(
-      text, new TextFormat().withFont(font).withWrapWidth(200).
-                             withEffect(TextFormat.Effect.shadow(0x33000000, -2, -2)).
-                             withTextColor(0xFF660000));
-    Layer layer = createTextLayer(layout);
+      text, new TextFormat().withFont(font).withWrapWidth(200));
+    Layer layer = createTextLayer(layout, 0xFF660000);
     layer.setTranslation(xpos, ypos);
     base.add(layer);
     xpos += layout.width() + MARGIN;
@@ -92,10 +90,8 @@ public class TextDemo extends Demo {
 
     text = "Wrapped text can be center-justified, if so desired.";
     layout = graphics().layoutText(
-      text, new TextFormat().withFont(font).withWrapping(200, TextFormat.Alignment.CENTER).
-                             withEffect(TextFormat.Effect.shadow(0x33000000, 2, 2)).
-                             withTextColor(0xFF006600));
-    layer = createTextLayer(layout);
+      text, new TextFormat().withFont(font).withWrapping(200, TextFormat.Alignment.CENTER));
+    layer = createTextLayer(layout, 0xFF006600);
     layer.setTranslation(xpos, ypos);
     base.add(layer);
     xpos += layout.width() + MARGIN;
@@ -103,10 +99,8 @@ public class TextDemo extends Demo {
 
     text = "Or it can be flush to the right, if that's how you like to justify yourself.";
     layout = graphics().layoutText(
-      text, new TextFormat().withFont(font).withWrapping(200, TextFormat.Alignment.RIGHT).
-                             withEffect(TextFormat.Effect.outline(0xFFFFFFFF)).
-                             withTextColor(0xFF000066));
-    layer = createTextLayer(layout);
+      text, new TextFormat().withFont(font).withWrapping(200, TextFormat.Alignment.RIGHT));
+    layer = createTextLayer(layout, 0xFF000066);
     layer.setTranslation(xpos, ypos);
     base.add(layer);
     xpos += layout.width() + MARGIN;
@@ -119,10 +113,11 @@ public class TextDemo extends Demo {
     base = null;
   }
 
-  protected Layer createTextLayer(TextLayout layout) {
+  protected Layer createTextLayer(TextLayout layout, int color) {
     CanvasImage image = graphics().createImage((int)Math.ceil(layout.width()),
                                                (int)Math.ceil(layout.height()));
-    image.canvas().drawText(layout, 0, 0);
+    image.canvas().setFillColor(color);
+    image.canvas().fillText(layout, 0, 0);
     return graphics().createImageLayer(image);
   }
 }
