@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="build-common" default="compile" xmlns:artifact="urn:maven-artifact-ant">
   <property name="src.dir"     value="src/main/java"/>
-  <property name="war.dir"     value="war"/>
+  <property name="war.dir"     value="src/main/webapp"/>
   <property name="target.dir"  value="target"/>
   <property name="classes.dir" value="${target.dir}/classes"/>
   <property name="webapp.dir"  value="${target.dir}/webapp"/>
@@ -58,6 +58,8 @@
                   version="${pom.properties.playn.version}"/>
       <dependency groupId="com.google.gwt" artifactId="gwt-dev"
                   version="${pom.properties.gwt.version}"/>
+      <dependency groupId="com.allen-sauer.gwt.log" artifactId="gwt-log"
+                  version="3.1.6"/>
     </artifact:dependencies>
     <path id="html.classpath">
       <path refid="core.classpath"/>
