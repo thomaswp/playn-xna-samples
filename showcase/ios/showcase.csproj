@@ -60,7 +60,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="OpenTK" />
+    <Reference Include="OpenTK-1.0" />
     <Reference Include="playn-showcase-ios">
       <HintPath>bin\playn-showcase-ios.dll</HintPath>
     </Reference>
