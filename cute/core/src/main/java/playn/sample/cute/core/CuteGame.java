@@ -65,6 +65,10 @@ public class CuteGame implements Game, Keyboard.Listener {
         touchVectorX = touchVectorY = 0;
       }
       @Override
+      public void onPointerCancel(Pointer.Event event) {
+        touchVectorX = touchVectorY = 0;
+      }
+      @Override
       public void onPointerDrag(Pointer.Event event) {
         touchMove(event.x(), event.y());
       }
