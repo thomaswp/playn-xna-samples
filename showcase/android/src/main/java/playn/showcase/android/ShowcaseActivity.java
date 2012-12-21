@@ -15,6 +15,9 @@
  */
 package playn.showcase.android;
 
+import android.app.ActivityManager;
+import android.os.Build;
+
 import playn.android.GameActivity;
 import playn.core.Font;
 import playn.core.PlayN;
@@ -27,6 +30,15 @@ public class ShowcaseActivity extends GameActivity {
   public void main(){
     platform().assets().setPathPrefix("playn/showcase/resources");
     platform().graphics().registerFont("text/Museo.otf", "Museo-300", Font.Style.PLAIN);
-    PlayN.run(new Showcase());
+    PlayN.run(new Showcase(new Showcase.DeviceService() {
+      public String info() {
+        Runtime rt = Runtime.getRuntime();
+        ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        return ("Android [model=" + Build.MODEL + ", cpu=" + Build.CPU_ABI +
+                ", osver=" + Build.VERSION.RELEASE + ", mclass=" + am.getMemoryClass() +
+                ", mem=" + (rt.freeMemory()/1024) + "k/" + (rt.totalMemory()/1024) + "k" +
+                ", maxmem=" + (rt.maxMemory()/1024) + "k]");
+      }
+    }));
   }
 }

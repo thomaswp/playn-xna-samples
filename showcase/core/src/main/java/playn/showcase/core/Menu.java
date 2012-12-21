@@ -81,7 +81,9 @@ public class Menu extends Demo
     root.add(new Label("PlayN Demos:"),
              buttons = new Group(AxisLayout.vertical().offStretch()),
              new Label("ESC/BACK key or two-finger tap returns to menu from demo"),
-             new Label("(renderer: " + graphics().getClass().getName() + ")"));
+             new Label("(renderer: " + graphics().getClass().getName() + ")"),
+             new Label("(device: " + showcase.deviceService.info() + ")").addStyles(
+               Style.TEXT_WRAP.is(true)));
 
     int key = 1;
     for (final Demo demo : showcase.demos) {

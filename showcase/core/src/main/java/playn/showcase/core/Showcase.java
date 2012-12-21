@@ -41,13 +41,24 @@ public class Showcase implements Game
   private Demo activeDemo;
   private Demo menuDemo = new Menu(this);
 
-  public List<Demo> demos = new ArrayList<Demo>(); {
+  public interface DeviceService {
+    /** Returns info on the device. */
+    String info();
+  }
+
+  public final DeviceService deviceService;
+
+  public final List<Demo> demos = new ArrayList<Demo>(); {
     // add your demo here to enable it in the showcase
     demos.add(new SpritesDemo());
     demos.add(new PeasDemo());
     demos.add(new SwirlDemo());
     demos.add(new SnakeDemo());
     demos.add(new TextDemo());
+  }
+
+  public Showcase(DeviceService deviceService) {
+    this.deviceService = deviceService;
   }
 
   public void activateDemo(Demo demo) {

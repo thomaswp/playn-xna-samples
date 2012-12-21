@@ -15,6 +15,8 @@
  */
 package playn.showcase.html;
 
+import com.google.gwt.user.client.Window;
+
 import playn.core.PlayN;
 import playn.html.HtmlGame;
 import playn.html.HtmlPlatform;
@@ -26,6 +28,10 @@ public class ShowcaseHtml extends HtmlGame {
   public void start() {
     HtmlPlatform platform = HtmlPlatform.register();
     platform.assets().setPathPrefix("showcase/");
-    PlayN.run(new Showcase());
+    PlayN.run(new Showcase(new Showcase.DeviceService() {
+      public String info() {
+        return "HTML [userAgent=" + Window.Navigator.getUserAgent() + "]";
+      }
+    }));
   }
 }

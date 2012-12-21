@@ -25,6 +25,16 @@ public class ShowcaseJava {
     JavaPlatform platform = JavaPlatform.register();
     platform.assets().setPathPrefix("playn/showcase/resources");
     platform.graphics().registerFont("Museo-300", "text/Museo.ttf");
-    PlayN.run(new Showcase());
+    PlayN.run(new Showcase(new Showcase.DeviceService() {
+      public String info () {
+        Runtime rt = Runtime.getRuntime();
+        return "Java [vers=" + System.getProperty("java.version") +
+          ", os=" + System.getProperty("os.name") +
+          ", osarch=" + System.getProperty("os.arch") +
+          ", osvers=" + System.getProperty("os.version") +
+          ", freemem=" + (rt.freeMemory()/1024) + "/" + (rt.totalMemory()/1024) + "k" +
+          ", maxmem=" + (rt.maxMemory()/1024) + "k]";
+      }
+    }));
   }
 }
