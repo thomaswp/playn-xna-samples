@@ -28,7 +28,6 @@ public class ShowcaseActivity extends GameActivity {
 
   @Override
   public void main(){
-    platform().assets().setPathPrefix("playn/showcase/resources");
     platform().graphics().registerFont("text/Museo.otf", "Museo-300", Font.Style.PLAIN);
     platform().graphics().registerFont("text/Museo.otf", "Museo-300", Font.Style.BOLD);
     platform().graphics().registerFont("text/Museo.otf", "Museo-300", Font.Style.ITALIC);

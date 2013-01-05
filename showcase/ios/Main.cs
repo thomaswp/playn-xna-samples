@@ -12,7 +12,6 @@ namespace playn.showcase.ios {
   public partial class AppDelegate : UIApplicationDelegate {
     public override bool FinishedLaunching (UIApplication app, NSDictionary options) {
       var pf = IOSPlatform.register(app);
-      pf.assets().setPathPrefix("assets");
       PlayN.run(new Showcase(new IOSDeviceService()));
       return true;
     }
