@@ -30,15 +30,26 @@ public class ShowcaseActivity extends GameActivity {
   public void main(){
     platform().assets().setPathPrefix("playn/showcase/resources");
     platform().graphics().registerFont("text/Museo.otf", "Museo-300", Font.Style.PLAIN);
-    PlayN.run(new Showcase(new Showcase.DeviceService() {
-      public String info() {
-        Runtime rt = Runtime.getRuntime();
-        ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        return ("Android [model=" + Build.MODEL + ", cpu=" + Build.CPU_ABI +
-                ", osver=" + Build.VERSION.RELEASE + ", mclass=" + am.getMemoryClass() +
-                ", mem=" + (rt.freeMemory()/1024) + "k/" + (rt.totalMemory()/1024) + "k" +
-                ", maxmem=" + (rt.maxMemory()/1024) + "k]");
-      }
-    }));
+    platform().graphics().registerFont("text/Museo.otf", "Museo-300", Font.Style.BOLD);
+    platform().graphics().registerFont("text/Museo.otf", "Museo-300", Font.Style.ITALIC);
+    platform().graphics().registerFont("text/Museo.otf", "Museo-300", Font.Style.BOLD_ITALIC);
+    PlayN.run(_game);
   }
+
+  @Override public void onBackPressed () {
+    if (_game == null || _game.shouldExitOnBack()) {
+      super.onBackPressed();
+    }
+  }
+
+  protected final Showcase _game = new Showcase(new Showcase.DeviceService() {
+    public String info() {
+      Runtime rt = Runtime.getRuntime();
+      ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+      return ("Android [model=" + Build.MODEL + ", cpu=" + Build.CPU_ABI +
+              ", osver=" + Build.VERSION.RELEASE + ", mclass=" + am.getMemoryClass() +
+              ", mem=" + (rt.freeMemory()/1024) + "k/" + (rt.totalMemory()/1024) + "k" +
+              ", maxmem=" + (rt.maxMemory()/1024) + "k]");
+    }
+  });
 }

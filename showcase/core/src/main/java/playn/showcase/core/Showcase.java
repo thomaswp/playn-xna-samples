@@ -35,11 +35,12 @@ import playn.showcase.core.text.TextDemo;
 /**
  * The main entry point for the showcase "game".
  */
-public class Showcase implements Game
-{
-  private Set<Key> backKeys = EnumSet.of(Key.ESCAPE, Key.BACK);
+public class Showcase implements Game {
+
+  private final Set<Key> backKeys = EnumSet.of(Key.ESCAPE, Key.BACK);
+  private final Demo menuDemo = new Menu(this);
   private Demo activeDemo;
-  private Demo menuDemo = new Menu(this);
+  private long activeStamp;
 
   public interface DeviceService {
     /** Returns info on the device. */
@@ -61,12 +62,23 @@ public class Showcase implements Game
     this.deviceService = deviceService;
   }
 
+  public boolean shouldExitOnBack() {
+    // the BACK button will get procesesd by Android immediately *after* we move to the main menu,
+    // so we want to debounce things so only if you press back after you're already on the main
+    // menu do we allow the app to exit via the normal back button processing
+    return (activeDemo == menuDemo) &&
+      (System.currentTimeMillis() - activeStamp) > 500L;
+  }
+
   public void activateDemo(Demo demo) {
     if (activeDemo != null) {
       activeDemo.shutdown();
     }
-    activeDemo = demo;
-    activeDemo.init();
+    if (activeDemo != demo) {
+      activeDemo = demo;
+      activeDemo.init();
+      activeStamp = System.currentTimeMillis();
+    }
   }
 
   @Override
