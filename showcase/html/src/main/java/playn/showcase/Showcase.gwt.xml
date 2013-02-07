@@ -21,6 +21,8 @@
   <inherits name='tripleplay.TriplePlay'/>
   <!-- for enhanced logging -->
   <inherits name="playn.logging.Enhanced" />
+  <!-- handles inclusion of our assets -->
+  <inherits name='ShowcaseAssets'/>
 
   <source path='core'/>
   <source path='html'/>
