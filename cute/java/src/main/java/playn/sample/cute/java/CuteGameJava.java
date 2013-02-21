@@ -23,7 +23,6 @@ public class CuteGameJava {
 
   public static void main(String[] args) {
     JavaPlatform platform = JavaPlatform.register();
-    platform.assets().setPathPrefix("playn/sample/cute/resources");
     PlayN.run(new CuteGame());
   }
 }

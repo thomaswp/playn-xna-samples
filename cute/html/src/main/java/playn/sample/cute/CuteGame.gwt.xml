@@ -15,11 +15,10 @@
 -->
 <module rename-to='cutegame'>
   <inherits name='playn.PlayN'/>
+  <inherits name="CuteAssets" />
 
-  <!--
-    Optionally, enable gwt-log's advanced logging features:
-
-      <inherits name="playn.logging.Enhanced" />
+  <!-- Optionally, enable gwt-log's advanced logging features:
+  <inherits name="playn.logging.Enhanced" />
   -->
 
   <source path='core'/>
@@ -27,5 +26,5 @@
 
   <public path="resources" />
 
-	<entry-point class='playn.sample.cute.html.CuteGameHtml'/>
+  <entry-point class='playn.sample.cute.html.CuteGameHtml'/>
 </module>

@@ -19,6 +19,7 @@
   </properties>
 
   <modules>
+    <module>assets</module>
     <module>core</module>
   </modules>
 
