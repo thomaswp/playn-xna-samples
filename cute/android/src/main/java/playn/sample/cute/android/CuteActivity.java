@@ -29,7 +29,6 @@ public class CuteActivity extends GameActivity {
 
   @Override
   public void main(){
-    platform().assets().setPathPrefix("playn/sample/cute/resources");
     PlayN.run(new CuteGame());
   }
 

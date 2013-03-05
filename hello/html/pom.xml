@@ -27,8 +27,28 @@
 
     <dependency>
       <groupId>com.googlecode.playn</groupId>
+      <artifactId>playn-hello-core</artifactId>
+      <version>${project.version}</version>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>com.googlecode.playn</groupId>
+      <artifactId>playn-hello-assets</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.googlecode.playn</groupId>
       <artifactId>playn-html</artifactId>
       <version>${playn.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.googlecode.playn</groupId>
+      <artifactId>playn-html</artifactId>
+      <version>${playn.version}</version>
+      <classifier>sources</classifier>
     </dependency>
   </dependencies>
 

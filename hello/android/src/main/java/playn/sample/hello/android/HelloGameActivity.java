@@ -23,7 +23,6 @@ public class HelloGameActivity extends GameActivity {
 
   @Override
   public void main(){
-    platform().assets().setPathPrefix("playn/sample/hello/resources");
     PlayN.run(new HelloGame());
   }
 }

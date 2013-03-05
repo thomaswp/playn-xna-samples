@@ -22,10 +22,11 @@
       <inherits name="playn.logging.Enhanced" />
   -->
 
+  <!-- handles inclusion of our assets -->
+  <inherits name='HelloAssets'/>
+
   <source path='core'/>
   <source path='html'/>
-
-  <public path="resources" />
 
   <entry-point class='playn.sample.hello.html.HelloGameHtml'/>
 </module>

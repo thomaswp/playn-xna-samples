@@ -14,7 +14,6 @@ namespace playn.sample.cute.ios
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
             IOSPlatform p = IOSPlatform.register(app);
-            p.assets().setPathPrefix("assets");
 		    PlayN.run(new CuteGame());
     		return true;
 		}
