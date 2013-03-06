@@ -88,7 +88,7 @@
         <version>1.0</version>
         <configuration>
           <solution>showcase.sln</solution>
-          <iossimPath>/usr/local/bin/ios-sim</iossimPath>
+          <!--<iossimPath>/usr/local/bin/ios-sim</iossimPath>-->
         </configuration>
         <executions>
           <execution>
