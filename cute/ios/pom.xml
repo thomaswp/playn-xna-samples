@@ -82,6 +82,27 @@
           </copyDlls>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>com.samskivert</groupId>
+        <artifactId>monotouch-maven-plugin</artifactId>
+        <version>1.0</version>
+        <configuration>
+          <solution>cute.sln</solution>
+          <iossimPath>/usr/local/bin/ios-sim</iossimPath>
+        </configuration>
+        <executions>
+          <execution>
+            <id>deploy-sim</id>
+            <phase>integration-test</phase>
+            <goals><goal>deploy-sim</goal></goals>
+          </execution>
+          <execution>
+            <id>deploy-device</id>
+            <phase>install</phase>
+            <goals><goal>deploy-device</goal></goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>
