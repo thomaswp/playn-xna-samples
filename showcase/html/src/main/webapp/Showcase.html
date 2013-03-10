@@ -29,8 +29,12 @@
     </style>
   </head>
   <body bgcolor="black">
-    <div style="font-family: 'Museo-300'; display: none">&nbsp;</div>
-    <div id="playn-root"></div>
+    <!-- the contents of this div will be cleared when PlayN initializes -->
+    <!-- the contents will be replaced with the PlayN <canvas> element -->
+    <div id="playn-root">
+      <!-- cause the browser to preload our custom fonts -->
+      <span style="font-family: 'Museo-300'">.</span>
+    </div>
     <script src="showcase/showcase.nocache.js"></script>
   </body>
 </html>
