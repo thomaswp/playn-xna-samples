@@ -17,11 +17,11 @@ package playn.showcase.core.peas.entities;
 
 import static playn.core.PlayN.assets;
 import static playn.core.PlayN.graphics;
+import static playn.core.PlayN.log;
 
-import playn.core.PlayN;
 import playn.core.Image;
 import playn.core.ImageLayer;
-import playn.core.ResourceCallback;
+import playn.core.util.Callback;
 
 import playn.showcase.core.peas.PeaWorld;
 
@@ -35,9 +35,9 @@ public abstract class Entity {
     this.angle = pangle;
     layer = graphics().createImageLayer(getImage());
     initPreLoad(peaWorld);
-    getImage().addCallback(new ResourceCallback<Image>() {
+    getImage().addCallback(new Callback<Image>() {
       @Override
-      public void done(Image image) {
+      public void onSuccess(Image image) {
         // since the image is loaded, we can use its width and height
         layer.setOrigin(image.width() / 2f, image.height() / 2f);
         layer.setScale(getWidth() / image.width(), getHeight() / image.height());
@@ -47,8 +47,8 @@ public abstract class Entity {
       }
 
       @Override
-      public void error(Throwable err) {
-        PlayN.log().error("Error loading image: " + err.getMessage());
+      public void onFailure(Throwable err) {
+        log().error("Error loading image: " + err.getMessage());
       }
     });
   }

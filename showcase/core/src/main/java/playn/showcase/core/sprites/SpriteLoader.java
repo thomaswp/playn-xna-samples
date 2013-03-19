@@ -23,7 +23,7 @@ import playn.core.Asserts;
 import playn.core.AssetWatcher;
 import playn.core.Image;
 import playn.core.Json;
-import playn.core.ResourceCallback;
+import playn.core.util.Callback;
 
 /**
  * Class for loading and parsing sprite sheets.
@@ -62,9 +62,9 @@ public class SpriteLoader {
     final Sprite sprite = new Sprite(graphics().createImageLayer(tempImage));
 
     // load and parse json
-    assets().getText(jsonPath, new ResourceCallback<String>() {
+    assets().getText(jsonPath, new Callback<String>() {
       @Override
-      public void done(String json) {
+      public void onSuccess(String json) {
         try {
           parseJson(images, sprite, json);
         } catch (Throwable err) {
@@ -75,20 +75,20 @@ public class SpriteLoader {
       }
 
       @Override
-      public void error(Throwable err) {
+      public void onFailure(Throwable err) {
         sprite.error(err);
       }
     });
 
     // set callback for image
-    image.addCallback(new ResourceCallback<Image>() {
+    image.addCallback(new Callback<Image>() {
       @Override
-      public void done(Image resource) {
+      public void onSuccess(Image resource) {
         sprite.doneLoadingImages();
       }
 
       @Override
-      public void error(Throwable err) {
+      public void onFailure(Throwable err) {
         sprite.error(err);
       }
     });
@@ -132,9 +132,9 @@ public class SpriteLoader {
     });
 
     // load and parse json, then add each image parsed from the json to the asset watcher to load
-    assets().getText(jsonPath, new ResourceCallback<String>() {
+    assets().getText(jsonPath, new Callback<String>() {
       @Override
-      public void done(String json) {
+      public void onSuccess(String json) {
         try {
           parseJson(null, sprite, json);
           for (SpriteImage spriteImage : sprite.spriteImages()) {
@@ -149,7 +149,7 @@ public class SpriteLoader {
       }
 
       @Override
-      public void error(Throwable err) {
+      public void onFailure(Throwable err) {
         sprite.error(err);
       }
     });

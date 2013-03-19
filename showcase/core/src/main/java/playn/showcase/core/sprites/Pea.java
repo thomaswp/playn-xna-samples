@@ -18,7 +18,7 @@ package playn.showcase.core.sprites;
 import static playn.core.PlayN.log;
 
 import playn.core.GroupLayer;
-import playn.core.ResourceCallback;
+import playn.core.util.Callback;
 
 public class Pea {
   public static String IMAGE = "sprites/peasprites.png";
@@ -39,9 +39,9 @@ public class Pea {
     // Add a callback for when the image loads.
     // This is necessary because we can't use the width/height (to center the
     // image) until after the image has been loaded
-    sprite.addCallback(new ResourceCallback<Sprite>() {
+    sprite.addCallback(new Callback<Sprite>() {
       @Override
-      public void done(Sprite sprite) {
+      public void onSuccess(Sprite sprite) {
         sprite.setSprite(spriteIndex);
         sprite.layer().setOrigin(sprite.width() / 2f, sprite.height() / 2f);
         sprite.layer().setTranslation(x, y);
@@ -50,7 +50,7 @@ public class Pea {
       }
 
       @Override
-      public void error(Throwable err) {
+      public void onFailure(Throwable err) {
         log().error("Error loading image!", err);
       }
     });

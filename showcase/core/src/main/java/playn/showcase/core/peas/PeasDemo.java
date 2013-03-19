@@ -19,12 +19,12 @@ import static playn.core.PlayN.assets;
 import static playn.core.PlayN.graphics;
 import static playn.core.PlayN.pointer;
 
-import playn.core.PlayN;
 import playn.core.GroupLayer;
 import playn.core.Image;
 import playn.core.ImageLayer;
+import playn.core.PlayN;
 import playn.core.Pointer;
-import playn.core.ResourceCallback;
+import playn.core.util.Callback;
 
 import playn.showcase.core.Demo;
 import playn.showcase.core.peas.entities.Pea;
@@ -60,15 +60,15 @@ public class PeasDemo extends Demo {
     worldLayer.setScale(1f / physUnitPerScreenUnit);
     graphics().rootLayer().add(worldLayer);
 
-    PeaLoader.CreateWorld("peas/levels/level1.json", worldLayer, new ResourceCallback<PeaWorld>() {
+    PeaLoader.CreateWorld("peas/levels/level1.json", worldLayer, new Callback<PeaWorld>() {
       @Override
-      public void done(PeaWorld resource) {
+      public void onSuccess(PeaWorld resource) {
         world = resource;
         worldLoaded = true;
       }
 
       @Override
-      public void error(Throwable err) {
+      public void onFailure(Throwable err) {
         PlayN.log().error("Error loading pea world: " + err.getMessage());
       }
     });

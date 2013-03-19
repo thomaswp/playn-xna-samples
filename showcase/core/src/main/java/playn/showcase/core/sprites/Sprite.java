@@ -15,15 +15,14 @@
  */
 package playn.showcase.core.sprites;
 
-import static playn.core.PlayN.log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import playn.core.Asserts;
 import playn.core.ImageLayer;
-import playn.core.ResourceCallback;
+import playn.core.util.Callback;
+import static playn.core.PlayN.log;
 
 /**
  * A Sprite is a collection of {@link SpriteImage}s.
@@ -40,7 +39,7 @@ public class Sprite {
   private ImageLayer layer;
   private List<SpriteImage> spriteImages;
   private HashMap<String, Integer> spriteIdMap;
-  private ResourceCallback<Sprite> callback;
+  private Callback<Sprite> callback;
   private SpriteImage current;
   private int currentId = -1;
   private boolean imagesDone = false; // true when images have finished loading
@@ -58,10 +57,10 @@ public class Sprite {
   /**
    * Set callback that will be called when both the sprite data and sprite image have been loaded.
    */
-  public void addCallback(ResourceCallback<Sprite> callback) {
+  public void addCallback(Callback<Sprite> callback) {
     this.callback = callback;
     if (isReady()) {
-      callback.done(this);
+      callback.onSuccess(this);
     }
   }
 
@@ -93,7 +92,7 @@ public class Sprite {
   /**
    * Return true when both the sprite data and the sprite image have been loaded.
    * <p>
-   * @see #addCallback(ResourceCallback)
+   * @see #addCallback(Callback)
    */
   public boolean isReady() {
     return imagesDone && dataDone;
@@ -141,11 +140,11 @@ public class Sprite {
 
   /**
    * Should be called when the sprite data and sprite image have been loaded. Will handle calling
-   * the {@link ResourceCallback} of the {@link Sprite}.
+   * the {@link Callback} of the {@link Sprite}.
    */
   void done() {
     if (callback != null) {
-      callback.done(this);
+      callback.onSuccess(this);
     }
   }
 
@@ -171,11 +170,11 @@ public class Sprite {
 
   /**
    * Should be called if an error occurs when loading the sprite image or data. Will handle calling
-   * the {@link ResourceCallback} of the {@link Sprite}.
+   * the {@link Callback} of the {@link Sprite}.
    */
   void error(Throwable err) {
     if (callback != null) {
-      callback.error(err);
+      callback.onFailure(err);
     } else {
       // don't let the error fall on deaf ears
       log().error("Error loading sprite", err);
