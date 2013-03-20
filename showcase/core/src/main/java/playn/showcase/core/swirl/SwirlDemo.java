@@ -89,13 +89,17 @@ public class SwirlDemo extends Demo {
   private void doStuff() {
   }
 
-  float angle = 0;
-  float scale = 1;
+  int elapsed;
 
   @Override
-  public void update(float delta) {
-    angle += delta * (float) Math.PI / 5000;
-    scale = (float) Math.sin(angle) + 0.5f;
+  public void update(int delta) {
+    elapsed += delta;
+  }
+
+  @Override
+  public void paint(float alpha) {
+    float angle = (elapsed + UPDATE_RATE*alpha) * (float) Math.PI / 5000;
+    float scale = (float) Math.sin(angle) + 0.5f;
 
     layer0.transform().setRotation(angle);
     layer1.transform().setRotation(angle);
@@ -109,9 +113,5 @@ public class SwirlDemo extends Demo {
 
     groupLayer.transform().setRotation(angle);
     groupLayer.transform().setUniformScale(scale);
-  }
-
-  @Override
-  public void paint(float alpha) {
   }
 }

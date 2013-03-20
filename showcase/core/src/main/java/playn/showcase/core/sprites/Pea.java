@@ -56,7 +56,7 @@ public class Pea {
     });
   }
 
-  public void update(float delta) {
+  public void update(int delta) {
     if (hasLoaded) {
       if (Math.random() > 0.95) {
         spriteIndex = (spriteIndex + 1) % sprite.numSprites();

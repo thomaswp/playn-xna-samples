@@ -84,7 +84,7 @@ public class SpritesDemo extends Demo {
   }
 
   @Override
-  public void update(float delta) {
+  public void update(int delta) {
     for (Pea pea : peas) {
       pea.update(delta);
     }

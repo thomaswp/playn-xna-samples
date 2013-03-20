@@ -104,7 +104,7 @@ public class PeasDemo extends Demo {
   }
 
   @Override
-  public void update(float delta) {
+  public void update(int delta) {
     if (worldLoaded) {
       world.update(delta);
     }

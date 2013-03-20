@@ -29,7 +29,8 @@ import playn.core.SurfaceLayer;
 import playn.core.util.Callback;
 import static playn.core.PlayN.*;
 
-public class CuteGame implements Game, Keyboard.Listener {
+public class CuteGame extends Game.Default
+  implements Keyboard.Listener {
 
   private static final int NUM_STARS = 10;
 
@@ -53,6 +54,10 @@ public class CuteGame implements Game, Keyboard.Listener {
   private boolean controlLeft, controlRight, controlUp, controlDown;
   private boolean controlJump;
   private float touchVectorX, touchVectorY;
+
+  public CuteGame() {
+    super(33);
+  }
 
   @Override
   public void init() {
@@ -210,7 +215,7 @@ public class CuteGame implements Game, Keyboard.Listener {
   }
 
   @Override
-  public void update(float delta) {
+  public void update(int delta) {
     if (world == null) {
       return;
     }
@@ -243,7 +248,7 @@ public class CuteGame implements Game, Keyboard.Listener {
       }
     }
 
-    world.updatePhysics(delta / 1000);
+    world.updatePhysics(delta / 1000f);
   }
 
   @Override
@@ -299,10 +304,5 @@ public class CuteGame implements Game, Keyboard.Listener {
         // TODO
       }
     });
-  }
-
-  @Override
-  public int updateRate() {
-    return 33;
   }
 }

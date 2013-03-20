@@ -69,7 +69,7 @@ public class SnakeDemo extends Demo
   }
 
   @Override
-  public void update(float delta) {
+  public void update(int delta) {
     // the tail segments play follow the leader
     for (int ii = segments.length-1; ii > 0; ii--) {
       ImageLayer cur = segments[ii], prev = segments[ii-1];

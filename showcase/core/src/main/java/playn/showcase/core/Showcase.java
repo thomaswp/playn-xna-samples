@@ -35,7 +35,7 @@ import playn.showcase.core.text.TextDemo;
 /**
  * The main entry point for the showcase "game".
  */
-public class Showcase implements Game {
+public class Showcase extends Game.Default {
 
   private final Set<Key> backKeys = EnumSet.of(Key.ESCAPE, Key.BACK);
   private final Demo menuDemo = new Menu(this);
@@ -59,6 +59,7 @@ public class Showcase implements Game {
   }
 
   public Showcase(DeviceService deviceService) {
+    super(Demo.UPDATE_RATE);
     this.deviceService = deviceService;
   }
 
@@ -120,17 +121,12 @@ public class Showcase implements Game {
   }
 
   @Override
-  public void update(float delta) {
+  public void update(int delta) {
     activeDemo.update(delta);
   }
 
   @Override
   public void paint(float alpha) {
     activeDemo.paint(alpha);
-  }
-
-  @Override
-  public int updateRate() {
-    return 25;
   }
 }

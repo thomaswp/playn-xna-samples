@@ -109,7 +109,7 @@ public class Menu extends Demo
   }
 
   @Override
-  public void update(float delta) {
+  public void update(int delta) {
     if (iface != null) {
       iface.update(delta);
     }

@@ -15,7 +15,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <playn.version>1.6</playn.version>
+    <playn.version>1.7-SNAPSHOT</playn.version>
   </properties>
 
   <modules>

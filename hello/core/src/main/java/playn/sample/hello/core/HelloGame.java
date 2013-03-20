@@ -26,9 +26,16 @@ import playn.core.Image;
 import playn.core.ImageLayer;
 import playn.core.Pointer;
 
-public class HelloGame implements Game {
+public class HelloGame extends Game.Default {
+
   GroupLayer peaLayer;
   List<Pea> peas = new ArrayList<Pea>(0);
+
+  public static final int UPDATE_RATE = 25;
+
+  public HelloGame() {
+    super(UPDATE_RATE);
+  }
 
   @Override
   public void init() {
@@ -55,21 +62,16 @@ public class HelloGame implements Game {
   }
 
   @Override
-  public void paint(float alpha) {
-    // layers automatically paint themselves (and their children). The rootlayer
-    // will paint itself, the background, and the pea group layer automatically
-    // so no need to do anything here!
-  }
-
-  @Override
-  public void update(float delta) {
+  public void update(int delta) {
     for (Pea pea : peas) {
       pea.update(delta);
     }
   }
 
   @Override
-  public int updateRate() {
-    return 25;
+  public void paint(float alpha) {
+    for (Pea pea : peas) {
+      pea.paint(alpha);
+    }
   }
 }

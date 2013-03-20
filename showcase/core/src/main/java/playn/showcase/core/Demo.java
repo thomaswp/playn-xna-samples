@@ -25,6 +25,8 @@ import playn.core.Keyboard;
  */
 public abstract class Demo
 {
+  public static final int UPDATE_RATE = 25;
+
   /**
    * Returns the name of this demo.
    */
@@ -44,7 +46,7 @@ public abstract class Demo
    * Called every update tick while this demo is active.
    * @param delta the amount of time that has elapsed since the last update call.
    */
-  public void update(float delta) {
+  public void update(int delta) {
   }
 
   /**
