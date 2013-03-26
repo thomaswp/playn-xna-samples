@@ -18,6 +18,7 @@ package playn.showcase.core;
 import playn.core.GroupLayer;
 import playn.core.Key;
 import playn.core.Keyboard;
+import playn.core.util.Clock;
 
 import react.UnitSlot;
 
@@ -110,6 +111,7 @@ public class Menu extends Demo
 
   @Override
   public void update(int delta) {
+    _clock.update(delta);
     if (iface != null) {
       iface.update(delta);
     }
@@ -117,8 +119,9 @@ public class Menu extends Demo
 
   @Override
   public void paint(float alpha) {
+    _clock.paint(alpha);
     if (iface != null) {
-      iface.paint(alpha);
+      iface.paint(_clock);
     }
   }
 
@@ -126,4 +129,6 @@ public class Menu extends Demo
   public Keyboard.Listener keyboardListener() {
     return keyListener;
   }
+
+  protected final Clock.Source _clock = new Clock.Source(UPDATE_RATE);
 }
