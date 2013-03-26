@@ -19,6 +19,7 @@ import org.jbox2d.callbacks.ContactImpulse;
 import org.jbox2d.callbacks.ContactListener;
 import org.jbox2d.callbacks.DebugDraw;
 import org.jbox2d.collision.Manifold;
+import org.jbox2d.collision.shapes.EdgeShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
@@ -68,25 +69,25 @@ public class PeaWorld implements ContactListener {
 
     // create the physics world
     Vec2 gravity = new Vec2(0.0f, 10.0f);
-    world = new World(gravity, true);
+    world = new World(gravity);
     world.setWarmStarting(true);
     world.setAutoClearForces(true);
     world.setContactListener(this);
 
     // create the ground
     Body ground = world.createBody(new BodyDef());
-    PolygonShape groundShape = new PolygonShape();
-    groundShape.setAsEdge(new Vec2(0, height), new Vec2(width, height));
+    EdgeShape groundShape = new EdgeShape();
+    groundShape.set(new Vec2(0, height), new Vec2(width, height));
     ground.createFixture(groundShape, 0.0f);
 
     // create the walls
     Body wallLeft = world.createBody(new BodyDef());
-    PolygonShape wallLeftShape = new PolygonShape();
-    wallLeftShape.setAsEdge(new Vec2(0, 0), new Vec2(0, height));
+    EdgeShape wallLeftShape = new EdgeShape();
+    wallLeftShape.set(new Vec2(0, 0), new Vec2(0, height));
     wallLeft.createFixture(wallLeftShape, 0.0f);
     Body wallRight = world.createBody(new BodyDef());
-    PolygonShape wallRightShape = new PolygonShape();
-    wallRightShape.setAsEdge(new Vec2(width, 0), new Vec2(width, height));
+    EdgeShape wallRightShape = new EdgeShape();
+    wallRightShape.set(new Vec2(width, 0), new Vec2(width, height));
     wallRight.createFixture(wallRightShape, 0.0f);
 
     if (showDebugDraw) {
