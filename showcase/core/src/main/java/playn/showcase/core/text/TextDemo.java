@@ -45,10 +45,9 @@ public class TextDemo extends Demo {
     bgtile.canvas().fillRect(0, 0, 64, 64);
     bgtile.canvas().setStrokeColor(0xFFFFFFFF);
     bgtile.canvas().strokeRect(0, 0, 64, 64);
+    bgtile.setRepeat(true, true);
 
     ImageLayer bg = graphics().createImageLayer(bgtile);
-    bg.setRepeatX(true);
-    bg.setRepeatY(true);
     bg.setWidth(graphics().width());
     bg.setHeight(graphics().height());
     base.add(bg);
