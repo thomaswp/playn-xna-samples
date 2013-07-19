@@ -43,6 +43,12 @@
     </dependency>
 
     <dependency>
+      <groupId>com.flurry</groupId>
+      <artifactId>flurry-agent</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+
+    <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>android</artifactId>
       <version>${android.version}</version>
