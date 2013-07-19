@@ -17,6 +17,19 @@
     <playn.version>1.8-SNAPSHOT</playn.version>
   </properties>
 
+  <!-- this is for Mavenized versions of Flurry jars/DLLs -->
+  <repositories>
+    <repository>
+      <id>ooo-public</id>
+      <url>http://ooo-maven.googlecode.com/hg/repository</url>
+    </repository>
+  </repositories>
+
+  <modules>
+    <module>assets</module>
+    <module>core</module>
+  </modules>
+
   <profiles>
     <profile>
       <id>java</id>
@@ -31,17 +44,5 @@
       <id>ios</id>
       <modules><module>ios</module></modules>
     </profile>
-    <profile>
-      <id>html</id>
-      <modules><module>html</module></modules>
-    </profile>
-    <profile>
-      <id>flash</id>
-      <modules><module>flash</module></modules>
-    </profile>
   </profiles>
-  <modules>
-    <module>assets</module>
-    <module>core</module>
-  </modules>
 </project>
