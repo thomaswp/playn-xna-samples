@@ -72,6 +72,9 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="OpenTK-1.0" />
+    <Reference Include="FlurryAnalytics">
+      <HintPath>bin\FlurryAnalytics.dll</HintPath>
+    </Reference>
     <Reference Include="playn-flurry-ios">
       <HintPath>bin\playn-flurry-ios.dll</HintPath>
     </Reference>

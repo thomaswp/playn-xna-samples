@@ -25,6 +25,14 @@
       <artifactId>playn-ios</artifactId>
       <version>${playn.version}</version>
     </dependency>
+
+    <!-- this is for Flurry SDK integration -->
+    <dependency>
+      <groupId>com.flurry</groupId>
+      <artifactId>FlurryAnalytics</artifactId>
+      <version>4.1.0-1</version>
+      <type>dll</type>
+    </dependency>
   </dependencies>
 
   <build>
@@ -79,6 +87,8 @@
             <copyDll>bin/IKVM.OpenJDK.Util.dll</copyDll>
             <copyDll>bin/IKVM.OpenJDK.Text.dll</copyDll>
           </copyDlls>
+          <!-- we need to copy our Flurry DLL into place -->
+          <copyDllDepends>true</copyDllDepends>
         </configuration>
       </plugin>
       <plugin>
