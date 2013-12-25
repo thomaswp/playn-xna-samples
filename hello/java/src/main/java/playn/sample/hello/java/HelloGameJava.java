@@ -22,7 +22,7 @@ import playn.sample.hello.core.HelloGame;
 public class HelloGameJava {
 
   public static void main(String[] args) {
-    JavaPlatform platform = JavaPlatform.register();
+    JavaPlatform.register();
     PlayN.run(new HelloGame());
   }
 }

@@ -27,7 +27,6 @@ import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class BlockGel extends Block {
-  @SuppressWarnings("hiding")
   public static String TYPE = "BlockGel";
 
   public BlockGel(PeaWorld peaWorld, World world, float x, float y, float angle) {

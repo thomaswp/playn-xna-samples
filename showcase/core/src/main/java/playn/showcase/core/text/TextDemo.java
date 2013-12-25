@@ -22,6 +22,8 @@ import playn.core.ImageLayer;
 import playn.core.Layer;
 import playn.core.TextFormat;
 import playn.core.TextLayout;
+import playn.core.TextWrap;
+import playn.core.util.TextBlock;
 import static playn.core.PlayN.*;
 
 import playn.showcase.core.Demo;
@@ -79,30 +81,29 @@ public class TextDemo extends Demo {
     Font font = graphics().createFont("Courier", Font.Style.PLAIN, 16);
     String text = "Text can also be wrapped at a specified width.\n\n" +
       "And wrapped manually at newlines.\nLike this.";
-    TextLayout layout = graphics().layoutText(
-      text, new TextFormat().withFont(font).withWrapWidth(200));
-    Layer layer = createTextLayer(layout, 0xFF660000);
+    TextFormat fmt = new TextFormat().withFont(font);
+    TextWrap wrap = new TextWrap(200);
+    TextBlock block = new TextBlock(graphics().layoutText(text, fmt, wrap));
+    Layer layer = graphics().createImageLayer(block.toImage(TextBlock.Align.LEFT, 0xFF660000));
     layer.setTranslation(xpos, ypos);
     base.add(layer);
-    xpos += layout.width() + MARGIN;
+    xpos += block.textWidth() + MARGIN;
     ypos += MARGIN;
 
     text = "Wrapped text can be center-justified, if so desired.";
-    layout = graphics().layoutText(
-      text, new TextFormat().withFont(font).withWrapping(200, TextFormat.Alignment.CENTER));
-    layer = createTextLayer(layout, 0xFF006600);
+    block = new TextBlock(graphics().layoutText(text, fmt, wrap));
+    layer = graphics().createImageLayer(block.toImage(TextBlock.Align.CENTER, 0xFF006600));
     layer.setTranslation(xpos, ypos);
     base.add(layer);
-    xpos += layout.width() + MARGIN;
+    xpos += block.textWidth() + MARGIN;
     ypos += MARGIN;
 
     text = "Or it can be flush to the right, if that's how you like to justify yourself.";
-    layout = graphics().layoutText(
-      text, new TextFormat().withFont(font).withWrapping(200, TextFormat.Alignment.RIGHT));
-    layer = createTextLayer(layout, 0xFF000066);
+    block = new TextBlock(graphics().layoutText(text, fmt, wrap));
+    layer = graphics().createImageLayer(block.toImage(TextBlock.Align.RIGHT, 0xFF000066));
     layer.setTranslation(xpos, ypos);
     base.add(layer);
-    xpos += layout.width() + MARGIN;
+    xpos += block.textWidth() + MARGIN;
     ypos += MARGIN;
   }
 

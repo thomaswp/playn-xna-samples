@@ -19,7 +19,6 @@ import playn.core.Image;
 import playn.showcase.core.peas.PeaWorld;
 
 public class Cloud3 extends Cloud1 {
-  @SuppressWarnings("hiding")
   public static String TYPE = "Cloud3";
 
   public Cloud3(PeaWorld peaWorld) {
