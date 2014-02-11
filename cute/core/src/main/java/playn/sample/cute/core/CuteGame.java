@@ -170,24 +170,26 @@ public class CuteGame extends Game.Default
     }
 
     switch (event.key()) {
-      case SPACE:
-        controlJump = true;
-        break;
-      case ESCAPE:
-        removeTopTile((int) catGirl.x, (int) catGirl.y);
-        break;
-      case LEFT:
-        controlLeft = true;
-        break;
-      case UP:
-        controlUp = true;
-        break;
-      case RIGHT:
-        controlRight = true;
-        break;
-      case DOWN:
-        controlDown = true;
-        break;
+    case SPACE:
+      controlJump = true;
+      break;
+    case ESCAPE:
+      removeTopTile((int) catGirl.x, (int) catGirl.y);
+      break;
+    case LEFT:
+      controlLeft = true;
+      break;
+    case UP:
+      controlUp = true;
+      break;
+    case RIGHT:
+      controlRight = true;
+      break;
+    case DOWN:
+      controlDown = true;
+      break;
+    default:
+      break; // nada
     }
   }
 
@@ -199,18 +201,20 @@ public class CuteGame extends Game.Default
   @Override
   public void onKeyUp(Keyboard.Event event) {
     switch (event.key()) {
-      case LEFT:
-        controlLeft = false;
-        break;
-      case UP:
-        controlUp = false;
-        break;
-      case RIGHT:
-        controlRight = false;
-        break;
-      case DOWN:
-        controlDown = false;
-        break;
+    case LEFT:
+      controlLeft = false;
+      break;
+    case UP:
+      controlUp = false;
+      break;
+    case RIGHT:
+      controlRight = false;
+      break;
+    case DOWN:
+      controlDown = false;
+      break;
+    default:
+      break; // nada
     }
   }
 
