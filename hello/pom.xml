@@ -34,8 +34,8 @@
       <modules><module>android</module></modules>
     </profile>
     <profile>
-      <id>ios</id>
-      <modules><module>ios</module></modules>
+      <id>xna</id>
+      <modules><module>xna</module></modules>
     </profile>
     <profile>
       <id>html</id>

@@ -9,9 +9,9 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>playn-hello-ios</artifactId>
+  <artifactId>playn-hello-xna</artifactId>
   <packaging>dll</packaging>
-  <name>PlayN Hello iOS</name>
+  <name>PlayN Hello XNA</name>
 
   <dependencies>
     <dependency>
@@ -19,18 +19,11 @@
       <artifactId>playn-hello-core</artifactId>
       <version>${project.version}</version>
     </dependency>
-
-    <dependency>
-      <groupId>com.googlecode.playn</groupId>
-      <artifactId>playn-ios</artifactId>
-      <version>${playn.version}</version>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
 
   <build>
     <!-- use bin as that's where MonoDevelop puts its build bits -->
-    <directory>bin</directory>
+    <directory>game</directory>
     <!-- omit the version from the dll name so it doesn't change with releases -->
     <finalName>${project.artifactId}</finalName>
     <plugins>
@@ -51,15 +44,15 @@
           <links>
             <link>
               <src>${basedir}/../assets/src/main/resources/assets</src>
-              <dst>${basedir}/assets</dst>
+              <dst>${basedir}/content/assets</dst>
             </link>
           </links>
         </configuration>
       </plugin>
       <plugin>
-        <groupId>com.samskivert</groupId>
+        <groupId>playn.xna</groupId>
         <artifactId>ikvm-maven-plugin</artifactId>
-        <version>1.2</version>
+        <version>1.3</version>
         <!-- this lets Maven know that we define 'packaging: dll' -->
         <extensions>true</extensions>
         <configuration>
@@ -68,10 +61,6 @@
           </ikvmArgs>
           <createStub>true</createStub>
           <dlls>
-            <dll>System.Data.dll</dll>
-            <dll>OpenTK-1.0.dll</dll>
-            <dll>monotouch.dll</dll>
-            <dll>Mono.Data.Sqlite.dll</dll>
           </dlls>
           <copyDlls>
             <copyDll>bin/IKVM.Runtime.dll</copyDll>
@@ -79,29 +68,11 @@
             <copyDll>bin/IKVM.OpenJDK.Core.dll</copyDll>
             <copyDll>bin/IKVM.OpenJDK.Util.dll</copyDll>
             <copyDll>bin/IKVM.OpenJDK.Text.dll</copyDll>
+			<copyDll>PlayN-1.8.5.dll</copyDll>
+			<copyDll>PlayNXNA.dll</copyDll>
+			<copyDll>PlayNContentImporter.dll</copyDll>
           </copyDlls>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.samskivert</groupId>
-        <artifactId>monotouch-maven-plugin</artifactId>
-        <version>1.0</version>
-        <configuration>
-          <solution>hello.sln</solution>
-          <!--<iossimPath>/usr/local/bin/ios-sim</iossimPath>-->
-        </configuration>
-        <executions>
-          <execution>
-            <id>deploy-sim</id>
-            <phase>integration-test</phase>
-            <goals><goal>deploy-sim</goal></goals>
-          </execution>
-          <execution>
-            <id>deploy-device</id>
-            <phase>install</phase>
-            <goals><goal>deploy-device</goal></goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
