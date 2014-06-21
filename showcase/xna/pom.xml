@@ -13,6 +13,17 @@
   <packaging>dll</packaging>
   <name>PlayN Showcase XNA</name>
 
+  <pluginRepositories>
+	<pluginRepository>
+	  <id>ikvm-maven-plugin</id>
+	  <url>${ikvm.plugin}</url>
+	</pluginRepository>
+	<pluginRepository>
+	  <id>playn-xna-plugin</id>
+	  <url>${xna.plugin}</url>
+	</pluginRepository>
+  </pluginRepositories>
+  
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
