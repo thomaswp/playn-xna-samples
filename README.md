@@ -21,9 +21,9 @@ Samples
 -------
 
 The following sample projects are configured for XNA and should run with full features:
-* (cute)[/cute]
-* (hello)[/hello]
-* (showcase)[/showcase]
+* [cute](/cute)
+* [hello](/hello)
+* [showcase](/showcase)
 
 Running the Samples
 -------------------
@@ -37,7 +37,7 @@ Then go to the xna folder, where you will find a .sln file. Open this using Visu
 Questions
 ---------
 
-For more information, check out [PlayN-XNA](https://github.com/thomaswp/playn-xna).
+For more information, check out [PlayN-XNA](https://github.com/thomaswp/playn-xna) and the [PlayN-XNA maven plugin](https://github.com/thomaswp/playn-xna-plugin).
 
 Licensing
 ---------
