@@ -8,3 +8,6 @@ classes
 *.pdb
 *.dll
 **/xna/content/assets/
+*.spritefont
+*.suo
+*.cachefile
