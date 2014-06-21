@@ -1,29 +1,43 @@
-PlayN Sample Projects
+PlayN XNA Sample Projects
 =====================
 
-PlayN is a cross-platform game development toolkit, which can be found here:
+Introduction
+------------
 
- http://code.google.com/p/playn/
+This project is a fork of the [PlayN Samples](https://code.google.com/p/playn-samples/) with example code for setting up an XNA target using [PlayN-XNA](https://github.com/thomaswp/playn-xna). 
 
-This project contains sample games and demos for the PlayN toolkit.
+Dependencies
+------------
 
-Building and running
---------------------
+PlayN-XNA currently only supports Windows, though this should change in the future using [monogame](http://www.monogame.net/).
 
-Instructions on building and running these samples can be found here:
+To run the samples, you must have the following dependencies installed:
+* [Visual Studio Express 2010](http://www.visualstudio.com/en-us/downloads#d-2010-express)
+* [The XNA 4.0 Framework](http://www.microsoft.com/en-us/download/details.aspx?id=23714) (If using Windows 8, you will first need to download the [Windows Marketplace Game Client](http://www.xbox.com/en-US/LIVE/PC/DownloadClient).)
 
- http://code.google.com/p/playn/wiki/GettingStarted#Running_the_sample_projects
+You must also configure the [PlayN-XNA maven plugin](https://github.com/thomaswp/playn-xna-plugin) or the project will not run.
 
-Discussion and Feedback
------------------------
+Samples
+-------
 
-Troubleshooting questions should be posted to the PlayN tag on Stack Overflow:
+The following sample projects are configured for XNA and should run with full features:
+* (cute)[/cute]
+* (hello)[/hello]
+* (showcase)[/showcase]
 
- http://stackoverflow.com/questions/tagged/playn
+Running the Samples
+-------------------
 
-General discussion should be directed to the PlayN Google Group:
+If you have installed and configured the dependencies (make sure you can run a normal XNA 4.0 Windows game), use the following command from inside any of the supported sample projects to generate an XNA build:
 
- http://groups.google.com/group/playn
+    mvn -Pxna package
+	
+Then go to the xna folder, where you will find a .sln file. Open this using Visual Studio 2010, and the game should run without further configuration. If the game contains a large number of assets, the first run may take a few minutes (the showcase project may do this).
+
+Questions
+---------
+
+For more information, check out [PlayN-XNA](https://github.com/thomaswp/playn-xna).
 
 Licensing
 ---------
