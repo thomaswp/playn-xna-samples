@@ -3,3 +3,8 @@ classes
 .classpath
 .settings/
 /*/*/target/
+**/bin/
+**/obj/
+*.pdb
+*.dll
+**/xna/content/assets/

@@ -37,6 +37,10 @@
       <id>ios</id>
       <modules><module>ios</module></modules>
     </profile>
+	<profile>
+      <id>xna</id>
+      <modules><module>xna</module></modules>
+    </profile>
     <profile>
       <id>html</id>
       <modules><module>html</module></modules>

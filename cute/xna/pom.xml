@@ -5,24 +5,24 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.googlecode.playn</groupId>
-    <artifactId>playn-hello</artifactId>
+    <artifactId>playn-cute</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>playn-hello-xna</artifactId>
+  <artifactId>playn-cute-xna</artifactId>
   <packaging>dll</packaging>
-  <name>PlayN Hello XNA</name>
+  <name>PlayN Cute XNA</name>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>playn-hello-core</artifactId>
+      <artifactId>playn-cute-core</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
 
   <build>
-    <directory>game</directory>
+	  
     <!-- omit the version from the dll name so it doesn't change with releases -->
     <finalName>${project.artifactId}</finalName>
     <plugins>
@@ -87,10 +87,9 @@
           </execution>
         </executions>
         <configuration>
-			<qualifiedGameName>playn.sample.hello.core.HelloGame</qualifiedGameName>
+			<qualifiedGameName>playn.sample.cute.core.CuteGame</qualifiedGameName>
         </configuration>
       </plugin>
-	  
     </plugins>
   </build>
 </project>

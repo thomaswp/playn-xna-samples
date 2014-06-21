@@ -5,24 +5,24 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.googlecode.playn</groupId>
-    <artifactId>playn-hello</artifactId>
+    <artifactId>playn-showcase</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>playn-hello-xna</artifactId>
+  <artifactId>playn-showcase-xna</artifactId>
   <packaging>dll</packaging>
-  <name>PlayN Hello XNA</name>
+  <name>PlayN Showcase XNA</name>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>playn-hello-core</artifactId>
+      <artifactId>playn-showcase-core</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
 
   <build>
-    <directory>game</directory>
+	  
     <!-- omit the version from the dll name so it doesn't change with releases -->
     <finalName>${project.artifactId}</finalName>
     <plugins>
@@ -87,10 +87,14 @@
           </execution>
         </executions>
         <configuration>
-			<qualifiedGameName>playn.sample.hello.core.HelloGame</qualifiedGameName>
+			<qualifiedGameName>playn.showcase.core.Showcase</qualifiedGameName>
+			<spritefonts>
+				<spritefont>Helvetica;Arial;8,12,24,36;Plain,Bold,Italic</spritefont>
+				<spritefont>Museo-300;Arial;8,12,24,36;Plain,Bold,Italic</spritefont>
+				<spritefont>Courier;Courier New;8,12,24,36;Plain,Bold,Italic</spritefont>
+			</spritefonts>
         </configuration>
       </plugin>
-	  
     </plugins>
   </build>
 </project>
