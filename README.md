@@ -52,7 +52,7 @@ First ensure you have the dependencies listed above. In order to build for XNA, 
       </activeProfiles>
     </settings>
 
-This should be sufficient to build the samples for XNA, but if you want to setup your own project, see the documentation for [PlayN-XNA](https://github.com/thomaswp/playn-xna/)
+This should be sufficient to build the samples for XNA, but if you want to setup your own project, see the documentation for [PlayN-XNA](https://github.com/thomaswp/playn-xna/).
 
 Samples
 -------
